@@ -151,6 +151,41 @@ namespace Krisa.Tarjeta
             }
         }
 
+        /// <summary>
+        /// Escribe el valor de un puerto de salida
+        /// </summary>
+        /// <param name="nombre">Nombre de puerto de salida</param>
+        /// <param name="data">Valor para escribir</param>
+        public void Escribir(string nombre, bool[] data)
+        {
+            Escribir(new string[] { nombre }, data);
+        }
+
+        /// <summary>
+        /// Escribe los valores de unos puertos de salida
+        /// </summary>
+        /// <param name="nombres">Nombres de puertos de salida</param>
+        /// <param name="data">Valor para escribir</param>
+        public void Escribir(string[] nombres, bool[] data)
+        {
+            try
+            {
+                using (Task digitalWriteTask = new Task())
+                {
+                    digitalWriteTask.DOChannels.CreateChannel(
+                        String.Join(",", nombres),
+                        "",
+                        ChannelLineGrouping.OneChannelForAllLines);
+                    var writer = new DigitalSingleChannelWriter(digitalWriteTask.Stream);
+                    writer.WriteSingleSampleMultiLine(true, data);
+                }
+            }
+            catch (DaqException ex)
+            {
+                throw new DriverException(ex);
+            }
+        }
+
         public void Close()
         {
             Dispose();

@@ -42,6 +42,9 @@
             this.btnLeerCanal = new System.Windows.Forms.Button();
             this.txtResult = new System.Windows.Forms.TextBox();
             this.btnParar = new System.Windows.Forms.Button();
+            this.txtDatos = new System.Windows.Forms.TextBox();
+            this.btnEscribirCanal = new System.Windows.Forms.Button();
+            this.btnEscribirPuerto = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -188,7 +191,7 @@
             // btnParar
             // 
             this.btnParar.Enabled = false;
-            this.btnParar.Location = new System.Drawing.Point(12, 257);
+            this.btnParar.Location = new System.Drawing.Point(93, 283);
             this.btnParar.Name = "btnParar";
             this.btnParar.Size = new System.Drawing.Size(75, 23);
             this.btnParar.TabIndex = 13;
@@ -196,11 +199,44 @@
             this.btnParar.UseVisualStyleBackColor = true;
             this.btnParar.Click += new System.EventHandler(this.btnParar_Click);
             // 
+            // txtDatos
+            // 
+            this.txtDatos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDatos.Location = new System.Drawing.Point(174, 256);
+            this.txtDatos.Name = "txtDatos";
+            this.txtDatos.Size = new System.Drawing.Size(259, 20);
+            this.txtDatos.TabIndex = 14;
+            // 
+            // btnEscribirCanal
+            // 
+            this.btnEscribirCanal.Enabled = false;
+            this.btnEscribirCanal.Location = new System.Drawing.Point(93, 254);
+            this.btnEscribirCanal.Name = "btnEscribirCanal";
+            this.btnEscribirCanal.Size = new System.Drawing.Size(75, 23);
+            this.btnEscribirCanal.TabIndex = 15;
+            this.btnEscribirCanal.Text = "Escribir C.";
+            this.btnEscribirCanal.UseVisualStyleBackColor = true;
+            this.btnEscribirCanal.Click += new System.EventHandler(this.btnEscribirCanal_Click);
+            // 
+            // btnEscribirPuerto
+            // 
+            this.btnEscribirPuerto.Location = new System.Drawing.Point(12, 254);
+            this.btnEscribirPuerto.Name = "btnEscribirPuerto";
+            this.btnEscribirPuerto.Size = new System.Drawing.Size(75, 23);
+            this.btnEscribirPuerto.TabIndex = 16;
+            this.btnEscribirPuerto.Text = "Escribir P.";
+            this.btnEscribirPuerto.UseVisualStyleBackColor = true;
+            this.btnEscribirPuerto.Click += new System.EventHandler(this.btnEscribirPuerto_Click);
+            // 
             // MainDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 337);
+            this.ClientSize = new System.Drawing.Size(445, 316);
+            this.Controls.Add(this.btnEscribirPuerto);
+            this.Controls.Add(this.btnEscribirCanal);
+            this.Controls.Add(this.txtDatos);
             this.Controls.Add(this.btnParar);
             this.Controls.Add(this.txtResult);
             this.Controls.Add(this.btnLeerCanal);
@@ -240,6 +276,9 @@
         private System.Windows.Forms.Button btnLeerCanal;
         private System.Windows.Forms.TextBox txtResult;
         private System.Windows.Forms.Button btnParar;
+        private System.Windows.Forms.TextBox txtDatos;
+        private System.Windows.Forms.Button btnEscribirCanal;
+        private System.Windows.Forms.Button btnEscribirPuerto;
     }
 }
 

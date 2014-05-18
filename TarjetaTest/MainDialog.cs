@@ -57,11 +57,13 @@ namespace Krisa.Tarjeta.Test
         private void lstPuertos_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnLeerPuerto.Enabled = lstPuertos.SelectedItems.Count > 0;
+            btnEscribirPuerto.Enabled = lstPuertos.SelectedItems.Count > 0;
         }
 
         private void lstCanales_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnLeerCanal.Enabled = lstCanales.SelectedItems.Count > 0;
+            btnEscribirCanal.Enabled = lstCanales.SelectedItems.Count > 0;
         }
 
         private void btnLeerPuerto_Click(object sender, EventArgs e)
@@ -104,6 +106,66 @@ namespace Krisa.Tarjeta.Test
 
                 var data = tarjeta.Leer(lstCanales.SelectedItems.Cast<string>().ToArray(), chkPersistente.Checked);
                 txtResult.Text = String.Join(", ", data.Select((b) => b ? "1" : "0"));
+
+                if (chkPersistente.Checked)
+                {
+                    chkPersistente.Enabled = false;
+                    btnParar.Enabled = true;
+                }
+                else
+                {
+                    tarjeta.Close();
+                    tarjeta = null;
+                }
+            }
+            catch (DriverException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnEscribirPuerto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (tarjeta == null)
+                {
+                    tarjeta = Driver.AbrirTarjeta(cmbTarjeta.SelectedItem.ToString());
+                }
+
+                var canales = lstPuertos.SelectedItems.Cast<string>().ToArray();
+                var data = txtDatos.Text.Split(',').Select((x) => int.Parse(x)).Select((x) => x != 0).ToArray();
+                tarjeta.Escribir(canales, data);
+
+                if (chkPersistente.Checked)
+                {
+                    chkPersistente.Enabled = false;
+                    btnParar.Enabled = true;
+                }
+                else
+                {
+                    tarjeta.Close();
+                    tarjeta = null;
+                }
+            }
+            catch (DriverException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnEscribirCanal_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (tarjeta == null)
+                {
+                    tarjeta = Driver.AbrirTarjeta(cmbTarjeta.SelectedItem.ToString());
+                }
+
+                var canales = lstCanales.SelectedItems.Cast<string>().ToArray();
+                var data = txtDatos.Text.Split(',').Select((x) => int.Parse(x)).Select((x) => x != 0).ToArray();
+                tarjeta.Escribir(canales, data);
 
                 if (chkPersistente.Checked)
                 {
