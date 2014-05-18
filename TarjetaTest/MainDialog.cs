@@ -12,6 +12,11 @@ namespace Krisa.Tarjeta.Test
 {
     public partial class MainDialog : Form
     {
+        /// <summary>
+        /// Tarjeta abierta
+        /// </summary>
+        private Tarjeta tarjeta;
+
         public MainDialog()
         {
             InitializeComponent();
@@ -34,17 +39,95 @@ namespace Krisa.Tarjeta.Test
         {
             try
             {
-                var tarjeta = Driver.AbrirTarjeta(cmbTarjeta.SelectedItem.ToString());
-                chkEmulador.Checked = tarjeta.Emulador;
-                lstPuertos.Items.Clear();
-                lstPuertos.Items.AddRange(tarjeta.PuertosDigitales);
-                lstCanales.Items.Clear();
-                lstCanales.Items.AddRange(tarjeta.CanalesDigitales);
+                using (var tarjeta = Driver.AbrirTarjeta(cmbTarjeta.SelectedItem.ToString()))
+                {
+                    chkEmulador.Checked = tarjeta.Emulador;
+                    lstPuertos.Items.Clear();
+                    lstPuertos.Items.AddRange(tarjeta.PuertosDigitales);
+                    lstCanales.Items.Clear();
+                    lstCanales.Items.AddRange(tarjeta.CanalesDigitales);
+                }
             }
             catch (DriverException ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void lstPuertos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnLeerPuerto.Enabled = lstPuertos.SelectedItems.Count > 0;
+        }
+
+        private void lstCanales_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnLeerCanal.Enabled = lstCanales.SelectedItems.Count > 0;
+        }
+
+        private void btnLeerPuerto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (tarjeta == null)
+                {
+                    tarjeta = Driver.AbrirTarjeta(cmbTarjeta.SelectedItem.ToString());
+                }
+
+                var data = tarjeta.Leer(lstPuertos.SelectedItems.Cast<string>().ToArray(), chkPersistente.Checked);
+                txtResult.Text = String.Join(", ", data.Select((b) => b ? "1" : "0"));
+
+                if (chkPersistente.Checked)
+                {
+                    chkPersistente.Enabled = false;
+                    btnParar.Enabled = true;
+                }
+                else
+                {
+                    tarjeta.Close();
+                    tarjeta = null;
+                }
+            }
+            catch (DriverException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnLeerCanal_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (tarjeta == null)
+                {
+                    tarjeta = Driver.AbrirTarjeta(cmbTarjeta.SelectedItem.ToString());
+                }
+
+                var data = tarjeta.Leer(lstCanales.SelectedItems.Cast<string>().ToArray(), chkPersistente.Checked);
+                txtResult.Text = String.Join(", ", data.Select((b) => b ? "1" : "0"));
+
+                if (chkPersistente.Checked)
+                {
+                    chkPersistente.Enabled = false;
+                    btnParar.Enabled = true;
+                }
+                else
+                {
+                    tarjeta.Close();
+                    tarjeta = null;
+                }
+            }
+            catch (DriverException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnParar_Click(object sender, EventArgs e)
+        {
+            chkPersistente.Enabled = true;
+            btnParar.Enabled = false;
+            tarjeta.Close();
+            tarjeta = null;
         }
     }
 }
