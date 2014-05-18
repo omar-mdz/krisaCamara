@@ -16,6 +16,8 @@ namespace Krisa.Datos
         // Ejemplo:
         // public DbSet<Estudiante> Estudiantes { get; set; }
 
+
+
         public KrisaDB()
         {
             RecrearBaseDeDatos();
