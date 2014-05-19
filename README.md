@@ -10,6 +10,7 @@ Contiene las funciones para trabajar con la cámara de video.
 
 3. Proyecto Tarjeta
 Contiene las funciones de comunicación con la tarjeta.
+(Nota: Requiere NI-DAQmx con opción Support for .NET 4.0 instalado)
 
 4. Proyecto ControlUsuarios
 Contiene las operaciones de control de usuarios.
