@@ -167,7 +167,7 @@
             this.btnLeerPuerto.TabIndex = 10;
             this.btnLeerPuerto.Text = "Leer Puerto";
             this.btnLeerPuerto.UseVisualStyleBackColor = true;
-            this.btnLeerPuerto.Click += new System.EventHandler(this.btnLeerPuerto_Click);
+            this.btnLeerPuerto.Click += new System.EventHandler(this.btnLeer_Click);
             // 
             // btnLeerCanal
             // 
@@ -178,7 +178,7 @@
             this.btnLeerCanal.TabIndex = 11;
             this.btnLeerCanal.Text = "Leer Canal";
             this.btnLeerCanal.UseVisualStyleBackColor = true;
-            this.btnLeerCanal.Click += new System.EventHandler(this.btnLeerCanal_Click);
+            this.btnLeerCanal.Click += new System.EventHandler(this.btnLeer_Click);
             // 
             // txtResult
             // 
@@ -217,17 +217,18 @@
             this.btnEscribirCanal.TabIndex = 15;
             this.btnEscribirCanal.Text = "Escribir C.";
             this.btnEscribirCanal.UseVisualStyleBackColor = true;
-            this.btnEscribirCanal.Click += new System.EventHandler(this.btnEscribirCanal_Click);
+            this.btnEscribirCanal.Click += new System.EventHandler(this.btnEscribir_Click);
             // 
             // btnEscribirPuerto
             // 
+            this.btnEscribirPuerto.Enabled = false;
             this.btnEscribirPuerto.Location = new System.Drawing.Point(12, 254);
             this.btnEscribirPuerto.Name = "btnEscribirPuerto";
             this.btnEscribirPuerto.Size = new System.Drawing.Size(75, 23);
             this.btnEscribirPuerto.TabIndex = 16;
             this.btnEscribirPuerto.Text = "Escribir P.";
             this.btnEscribirPuerto.UseVisualStyleBackColor = true;
-            this.btnEscribirPuerto.Click += new System.EventHandler(this.btnEscribirPuerto_Click);
+            this.btnEscribirPuerto.Click += new System.EventHandler(this.btnEscribir_Click);
             // 
             // MainDialog
             // 

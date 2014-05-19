@@ -32,11 +32,11 @@ namespace Krisa.Tarjeta
         /// </summary>
         /// <param name="nombre">Nombre de la tarjeta para abrir</param>
         /// <returns>Informacion de la tarjeta</returns>
-        public static Tarjeta AbrirTarjeta(string nombre)
+        internal static Device AbrirTarjeta(string nombre)
         {
             try
             {
-                return new Tarjeta(DaqSystem.Local.LoadDevice(nombre));
+                return DaqSystem.Local.LoadDevice(nombre);
             }
             catch (DaqException ex)
             {

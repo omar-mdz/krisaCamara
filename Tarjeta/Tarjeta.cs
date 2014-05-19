@@ -24,6 +24,10 @@ namespace Krisa.Tarjeta
             tareas = new Dictionary<string, Task>();
         }
 
+        public Tarjeta(string nombre) : this(Driver.AbrirTarjeta(nombre))
+        {
+        }
+
         /// <summary>
         /// Regresa si esta tarjeta es un emulador
         /// </summary>
@@ -79,61 +83,51 @@ namespace Krisa.Tarjeta
         }
 
         /// <summary>
-        /// Creas una parea de lectura de los datos digitales
-        /// </summary>
-        /// <param name="nombre">Nombres de los puertos</param>
-        /// <param name="persistente">true - para hacer tarea persistente</param>
-        /// <returns>Tarea creada</returns>
-        private Task CrearTareaLectura(string[] nombres, bool persistente)
-        {
-            // Si la tarea esta creada antes
-            var nombreTarea = String.Join(";", nombres);
-            if (tareas.ContainsKey(nombreTarea))
-            {
-                return tareas[nombreTarea];
-            }
-            // Crear nueva tarea
-            var tarea = new Task();
-            // Agregar los canales
-            foreach (var nombre in nombres)
-            {
-                tarea.DIChannels.CreateChannel(
-                    nombre,
-                    nombre.Split(new char[] { '/' }, 2)[1].Replace('/', '-'),
-                    ChannelLineGrouping.OneChannelForAllLines);
-            }
-
-            if (persistente)
-            {
-                tareas.Add(nombreTarea, tarea);
-            }
-
-            return tarea;
-        }
-
-        /// <summary>
-        /// Lee el valor de un puerto de entrada
+        /// Lee el valor de un puerto de entrada binario
         /// </summary>
         /// <param name="nombre">Nombre de puerto de entrada</param>
         /// <param name="persistente">true - para crear una tarea de lectura permanente</param>
         /// <returns>El valor de un puerto</returns>
-        public bool[] Leer(string nombre, bool persistente = false)
+        public bool[] LeerBinario(string nombre, bool persistente = false)
         {
-            return Leer(new string[] { nombre }, persistente);
+            return LeerBinario(new string[] { nombre }, persistente);
         }
 
         /// <summary>
-        /// Lee los valores de unos puertos de entrada
+        /// Lee los valores de unos puertos de entrada binarios
         /// </summary>
         /// <param name="nombres">Nombres de puertos de entrada</param>
         /// <param name="persistente">true - para crear una tarea de lectura permanente</param>
         /// <returns>El valor de los puertos</returns>
-        public bool[] Leer(string[] nombres, bool persistente = false)
+        public bool[] LeerBinario(string[] nombres, bool persistente = false)
         {
             Task digitalReadTask = null;
             try
             {
-                digitalReadTask = CrearTareaLectura(nombres, persistente);
+                // Generar nombre de la tarea
+                var nombreTarea = "L" + String.Join(",", nombres);
+                // Si la tarea esta creada antes
+                if (tareas.ContainsKey(nombreTarea))
+                {
+                    digitalReadTask = tareas[nombreTarea];
+                    persistente = true;
+                }
+                else
+                {
+                    // Crear nueva tarea
+                    digitalReadTask = new Task();
+                    // Agregar los canales
+                    digitalReadTask.DIChannels.CreateChannel(
+                        String.Join(",", nombres),
+                        "",
+                        ChannelLineGrouping.OneChannelForAllLines);
+                    // Guardar tarea persistente
+                    if (persistente)
+                    {
+                        tareas.Add(nombreTarea, digitalReadTask);
+                    }
+                }
+                // Leer los datos
                 var reader = new DigitalSingleChannelReader(digitalReadTask.Stream);
                 return reader.ReadSingleSampleMultiLine();
             }
@@ -152,37 +146,65 @@ namespace Krisa.Tarjeta
         }
 
         /// <summary>
-        /// Escribe el valor de un puerto de salida
+        /// Escribe el valor de un puerto de salida binario
         /// </summary>
         /// <param name="nombre">Nombre de puerto de salida</param>
         /// <param name="data">Valor para escribir</param>
-        public void Escribir(string nombre, bool[] data)
+        /// <param name="persistente">true - para crear una tarea de escritura permanente</param>
+        public void EscribirBinario(string nombre, bool[] data, bool persistente = false)
         {
-            Escribir(new string[] { nombre }, data);
+            EscribirBinario(new string[] { nombre }, data, persistente);
         }
 
         /// <summary>
-        /// Escribe los valores de unos puertos de salida
+        /// Escribe los valores de unos puertos de salida binarios
         /// </summary>
         /// <param name="nombres">Nombres de puertos de salida</param>
         /// <param name="data">Valor para escribir</param>
-        public void Escribir(string[] nombres, bool[] data)
+        /// <param name="persistente">true - para crear una tarea de escritura permanente</param>
+        public void EscribirBinario(string[] nombres, bool[] data, bool persistente = false)
         {
+            Task digitalWriteTask = null;
             try
             {
-                using (Task digitalWriteTask = new Task())
+                // Generar nombre de la tarea
+                var nombreTarea = "E" + String.Join(",", nombres);
+                // Si la tarea esta creada antes
+                if (tareas.ContainsKey(nombreTarea))
                 {
+                    digitalWriteTask = tareas[nombreTarea];
+                    persistente = true;
+                }
+                else
+                {
+                    // Crear nueva tarea
+                    digitalWriteTask = new Task();
+                    // Agregar los canales
                     digitalWriteTask.DOChannels.CreateChannel(
                         String.Join(",", nombres),
                         "",
                         ChannelLineGrouping.OneChannelForAllLines);
-                    var writer = new DigitalSingleChannelWriter(digitalWriteTask.Stream);
-                    writer.WriteSingleSampleMultiLine(true, data);
+                    // Guardar tarea persistente
+                    if (persistente)
+                    {
+                        tareas.Add(nombreTarea, digitalWriteTask);
+                    }
                 }
+                // Escribir los datos
+                var writer = new DigitalSingleChannelWriter(digitalWriteTask.Stream);
+                writer.WriteSingleSampleMultiLine(true, data);
             }
             catch (DaqException ex)
             {
                 throw new DriverException(ex);
+            }
+            finally
+            {
+                if (!persistente && (digitalWriteTask != null))
+                {
+                    digitalWriteTask.Dispose();
+                    digitalWriteTask = null;
+                }
             }
         }
 
