@@ -27,7 +27,10 @@ namespace Krisa.Tarjeta.Test
             try
             {
                 cmbTarjeta.Items.AddRange(Driver.Tarjetas);
-                cmbTarjeta.SelectedIndex = 0;
+                if (cmbTarjeta.Items.Count > 0)
+                {
+                    cmbTarjeta.SelectedIndex = 0;
+                }
             }
             catch (DriverException ex)
             {
