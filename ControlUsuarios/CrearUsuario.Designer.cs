@@ -232,6 +232,7 @@
             this.Button1.Text = "Guardar";
             this.Button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.Button1.UseVisualStyleBackColor = false;
+            this.Button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // CrearUsuario
             // 
@@ -246,7 +247,7 @@
             this.Controls.Add(this.Button2);
             this.Controls.Add(this.Button1);
             this.Name = "CrearUsuario";
-            this.Text = "Form1";
+            this.Text = "Crear usuario";
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             this.GroupBox1.ResumeLayout(false);
             this.GroupBox1.PerformLayout();
