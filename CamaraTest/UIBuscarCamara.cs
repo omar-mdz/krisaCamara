@@ -141,7 +141,7 @@ namespace CamaraTest
             int width = 320;
             int height = 240;
 
-            // create instance of video writer
+            // create instance of video writer 
             VideoFileWriter writer = new VideoFileWriter();
             // create new video file
             writer.Open("choto.avi", width, height, 25, VideoCodec.MPEG4);
