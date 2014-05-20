@@ -6,19 +6,18 @@ using System.Text;
 namespace Krisa.Datos
 {
     /// <summary>
-    /// Tarjeta existentes en el laboratorio
+    /// Variables utilizas en los Experimentos extraidas de la Tarjeta
     /// </summary>
 
-    public class Tarjeta
+    public class VariableDatosTarjeta
     {
         public int ID { get; set; }
 
         public string Nombre { get; set; }
 
-        public string Direccion { get; set; }
+        public string Tipo { get; set; }
 
-        public string Configuracion { get; set; }
+        public string Unidad { get; set; }
 
     }
-
 }
