@@ -45,6 +45,7 @@
             this.txtDatos = new System.Windows.Forms.TextBox();
             this.btnEscribirCanal = new System.Windows.Forms.Button();
             this.btnEscribirPuerto = new System.Windows.Forms.Button();
+            this.btnAgregarTarjeta = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -230,11 +231,22 @@
             this.btnEscribirPuerto.UseVisualStyleBackColor = true;
             this.btnEscribirPuerto.Click += new System.EventHandler(this.btnEscribir_Click);
             // 
+            // btnAgregarTarjeta
+            // 
+            this.btnAgregarTarjeta.Location = new System.Drawing.Point(12, 312);
+            this.btnAgregarTarjeta.Name = "btnAgregarTarjeta";
+            this.btnAgregarTarjeta.Size = new System.Drawing.Size(156, 23);
+            this.btnAgregarTarjeta.TabIndex = 17;
+            this.btnAgregarTarjeta.Text = "Agregar Tarjeta";
+            this.btnAgregarTarjeta.UseVisualStyleBackColor = true;
+            this.btnAgregarTarjeta.Click += new System.EventHandler(this.btnAgregarTarjeta_Click);
+            // 
             // MainDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 316);
+            this.ClientSize = new System.Drawing.Size(445, 356);
+            this.Controls.Add(this.btnAgregarTarjeta);
             this.Controls.Add(this.btnEscribirPuerto);
             this.Controls.Add(this.btnEscribirCanal);
             this.Controls.Add(this.txtDatos);
@@ -280,6 +292,7 @@
         private System.Windows.Forms.TextBox txtDatos;
         private System.Windows.Forms.Button btnEscribirCanal;
         private System.Windows.Forms.Button btnEscribirPuerto;
+        private System.Windows.Forms.Button btnAgregarTarjeta;
     }
 }
 
