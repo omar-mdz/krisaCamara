@@ -16,12 +16,20 @@ namespace Krisa.Datos
         // Ejemplo:
         // public DbSet<Estudiante> Estudiantes { get; set; }
 
-
-
-        public KrisaDB()
+      public DbSet<Usuario> Usuarios { get; set; }
+        
+       public class Usuario
         {
-            RecrearBaseDeDatos();
+            public int ID { get; set; }
+            public String Nusuario { get; set; }
+            public String Nombre { get; set; }
+            public String Pass { get; set; }
         }
+
+       //public KrisaDB()
+       // {
+           // RecrearBaseDeDatos();
+       // }
 
         /// <summary>
         /// Elimina y crea de nuevo base de datos si el modelo ha cambiado.
