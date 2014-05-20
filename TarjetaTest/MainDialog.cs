@@ -144,5 +144,11 @@ namespace Krisa.Tarjeta.Test
             tarjeta.Close();
             tarjeta = null;
         }
+
+        private void btnAgregarTarjeta_Click(object sender, EventArgs e)
+        {
+            var form = new AgregarTarjeta();
+            form.ShowDialog();
+        }
     }
 }
