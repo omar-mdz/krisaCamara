@@ -42,19 +42,27 @@ namespace CamaraTest
 
         private void button1_Click(object sender, EventArgs e)
         {
-            getCamList();
+            writer.Close();
+            label1.Text = ""; 
         }
 
         private void start_Click(object sender, EventArgs e)
         {
-            if (start.Text == "&Start")
+            showVideo();
+        }
+
+
+        public void showVideo()
+        {
+            if (start.Text == "&Seleccionar")
             {
                 if (DeviceExist)
                 {
                     videoSource = new VideoCaptureDevice(videoDevices[comboBox1.SelectedIndex].MonikerString);
                     videoSource.NewFrame += new NewFrameEventHandler(video_NewFrame);
+                    videoSource.NewFrame += new NewFrameEventHandler(video_NewFrameSave);
                     CloseVideoSource();
-                    videoSource.DesiredFrameSize = new Size(160, 120);
+                    //videoSource.DesiredFrameSize = new Size(640, 480);
                     //videoSource.DesiredFrameRate = 10;
                     videoSource.Start();
                     label2.Text = "Device running...";
@@ -68,14 +76,20 @@ namespace CamaraTest
             }
             else
             {
-                if (videoSource.IsRunning)
+                try
                 {
-                    timer1.Enabled = false;
-                    CloseVideoSource();
-                    label2.Text = "Device stopped.";
-                    start.Text = "&Start";
+                    if (videoSource.IsRunning)
+                    {
+                        timer1.Enabled = false;
+                        CloseVideoSource();
+                        label2.Text = "Device stopped.";
+                        start.Text = "&Seleccionar";
+                    }
                 }
+                catch { }
+
             }
+
         }
 
         private void getCamList()
@@ -106,12 +120,26 @@ namespace CamaraTest
             CloseVideoSource();
         }
 
-        Bitmap img;
+        
         private void video_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
-            img = (Bitmap)eventArgs.Frame.Clone();
+            Bitmap img = (Bitmap)eventArgs.Frame.Clone();
             pictureBoxVideo.Image = img;
         }
+
+        Bitmap imgsave;
+        private void video_NewFrameSave(object sender, NewFrameEventArgs eventArgs)
+        { 
+            imgsave = (Bitmap)eventArgs.Frame.Clone();
+            try
+            {
+                writer.WriteVideoFrame((Bitmap)eventArgs.Frame.Clone());
+            }
+            catch { }
+                
+        }
+
+
 
         //get total received frame at 1 second tick
         private void timer1_Tick(object sender, EventArgs e)
@@ -136,24 +164,16 @@ namespace CamaraTest
 
         }
 
+
+        VideoFileWriter writer;
         private void button2_Click(object sender, EventArgs e)
         {
-            int width = 320;
-            int height = 240;
 
-            // create instance of video writer 
-            VideoFileWriter writer = new VideoFileWriter();
-            // create new video file
-            writer.Open("choto.avi", width, height, 25, VideoCodec.MPEG4);
-            // create a bitmap to save into the video file
-            Bitmap image = new Bitmap(width, height, PixelFormat.Format24bppRgb);
-            // write 1000 video frames
-            for (int i = 0; i < 1000; i++)
-            {
-                image.SetPixel(i % width, i % height, Color.Red);
-                writer.WriteVideoFrame(image);
-            }
-            writer.Close();
+            writer = new VideoFileWriter();
+            writer.Open("test.avi", imgsave.Width, imgsave.Height, 12, VideoCodec.MPEG4);
+            label1.Text = "Recording...";
         }
+
+
     }
 }

@@ -36,13 +36,14 @@
             this.pictureBoxVideo = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVideo)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(663, 15);
+            this.label2.Location = new System.Drawing.Point(337, 54);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 8;
@@ -50,21 +51,21 @@
             // 
             // start
             // 
-            this.start.Location = new System.Drawing.Point(456, 12);
+            this.start.Location = new System.Drawing.Point(340, 12);
             this.start.Name = "start";
             this.start.Size = new System.Drawing.Size(75, 23);
             this.start.TabIndex = 7;
-            this.start.Text = "&Start";
+            this.start.Text = "&Seleccionar";
             this.start.UseVisualStyleBackColor = true;
             this.start.Click += new System.EventHandler(this.start_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(340, 12);
+            this.button1.Location = new System.Drawing.Point(561, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(121, 23);
             this.button1.TabIndex = 6;
-            this.button1.Text = "Detectar";
+            this.button1.Text = "Stop recording";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -78,16 +79,16 @@
             // 
             // pictureBoxVideo
             // 
-            this.pictureBoxVideo.Location = new System.Drawing.Point(1, 42);
+            this.pictureBoxVideo.Location = new System.Drawing.Point(1, 70);
             this.pictureBoxVideo.Name = "pictureBoxVideo";
-            this.pictureBoxVideo.Size = new System.Drawing.Size(835, 482);
+            this.pictureBoxVideo.Size = new System.Drawing.Size(812, 507);
             this.pictureBoxVideo.TabIndex = 9;
             this.pictureBoxVideo.TabStop = false;
             this.pictureBoxVideo.Click += new System.EventHandler(this.pictureBoxVideo_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(537, 13);
+            this.button2.Location = new System.Drawing.Point(480, 12);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 10;
@@ -95,11 +96,20 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(480, 53);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 11;
+            // 
             // UIBuscarCamara
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(835, 524);
+            this.ClientSize = new System.Drawing.Size(812, 576);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.pictureBoxVideo);
             this.Controls.Add(this.label2);
@@ -124,6 +134,7 @@
         private System.Windows.Forms.PictureBox pictureBoxVideo;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label1;
     }
 }
 
