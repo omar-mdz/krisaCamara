@@ -249,6 +249,7 @@
             this.Controls.Add(this.Button1);
             this.Name = "CrearUsuario";
             this.Text = "Crear usuario";
+            this.Load += new System.EventHandler(this.CrearUsuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             this.GroupBox1.ResumeLayout(false);
             this.GroupBox1.PerformLayout();
