@@ -138,7 +138,7 @@
             // TextBox4
             // 
             this.TextBox4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox4.Location = new System.Drawing.Point(25, 181);
+            this.TextBox4.Location = new System.Drawing.Point(25, 243);
             this.TextBox4.Margin = new System.Windows.Forms.Padding(4);
             this.TextBox4.Name = "TextBox4";
             this.TextBox4.Size = new System.Drawing.Size(232, 25);
@@ -157,21 +157,21 @@
             // TextBox3
             // 
             this.TextBox3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox3.Location = new System.Drawing.Point(25, 121);
+            this.TextBox3.Location = new System.Drawing.Point(25, 181);
             this.TextBox3.Margin = new System.Windows.Forms.Padding(4);
             this.TextBox3.Name = "TextBox3";
             this.TextBox3.Size = new System.Drawing.Size(232, 25);
             this.TextBox3.TabIndex = 14;
+            this.TextBox3.UseSystemPasswordChar = true;
             // 
             // TextBox2
             // 
             this.TextBox2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBox2.Location = new System.Drawing.Point(25, 243);
+            this.TextBox2.Location = new System.Drawing.Point(25, 131);
             this.TextBox2.Margin = new System.Windows.Forms.Padding(4);
             this.TextBox2.Name = "TextBox2";
             this.TextBox2.Size = new System.Drawing.Size(232, 25);
             this.TextBox2.TabIndex = 13;
-            this.TextBox2.UseSystemPasswordChar = true;
             // 
             // btnReacticvarCuenta
             // 
@@ -220,6 +220,7 @@
             this.Button2.TabIndex = 29;
             this.Button2.Text = "Cancelar";
             this.Button2.UseVisualStyleBackColor = false;
+            this.Button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // Button1
             // 
