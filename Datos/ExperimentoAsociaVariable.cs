@@ -15,9 +15,9 @@ namespace Krisa.Datos
 
         public DateTime FechaDeObtencion { get; set; }
 
-        public VariableDatosTarjeta Owner { get; set; }
+        public VariableDatosTarjeta VariableDatosTarjeta { get; set; }
 
-        public Experimento Owner { get; set; }
+        public Experimento Experimento { get; set; }
         
     }
 }

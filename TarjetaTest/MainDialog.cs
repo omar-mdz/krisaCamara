@@ -32,7 +32,7 @@ namespace Krisa.Tarjeta.Test
                     cmbTarjeta.SelectedIndex = 0;
                 }
             }
-            catch (DriverException ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -51,7 +51,7 @@ namespace Krisa.Tarjeta.Test
                     lstCanales.Items.AddRange(tarjeta.CanalesDigitales);
                 }
             }
-            catch (DriverException ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -97,7 +97,7 @@ namespace Krisa.Tarjeta.Test
                     tarjeta = null;
                 }
             }
-            catch (DriverException ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -131,7 +131,7 @@ namespace Krisa.Tarjeta.Test
                     tarjeta = null;
                 }
             }
-            catch (DriverException ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

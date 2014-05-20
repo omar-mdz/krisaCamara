@@ -24,7 +24,7 @@ namespace Krisa.Datos
 
         public int Parametros_Sonido_Intervalo { get; set; }
 
-        public BitConverter Parametros_Luz { get; set; }
+        public bool Parametros_Luz { get; set; }
 
         public int Parametros_NumerosPellets { get; set; }
 
