@@ -168,7 +168,6 @@ namespace CamaraTest
         VideoFileWriter writer;
         private void button2_Click(object sender, EventArgs e)
         {
-
             writer = new VideoFileWriter();
             writer.Open("test.avi", imgsave.Width, imgsave.Height, 12, VideoCodec.MPEG4);
             label1.Text = "Recording...";
