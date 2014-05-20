@@ -1,16 +1,16 @@
-﻿namespace Krisa.Camara
+﻿namespace CamaraTest
 {
     partial class UIBuscarCamara
     {
         /// <summary>
-        /// Required designer variable.
+        /// Variable del diseñador requerida.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Limpiar los recursos que se estén utilizando.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true si los recursos administrados se deben eliminar; false en caso contrario.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,82 +20,82 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Código generado por el Diseñador de Windows Forms
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// Método necesario para admitir el Diseñador. No se puede modificar
+        /// el contenido del método con el editor de código.
         /// </summary>
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.start = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.start = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.pictureBoxVideo = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVideo)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // label2
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(24, 15);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(313, 21);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(561, 17);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "label2";
+            // 
+            // start
+            // 
+            this.start.Location = new System.Drawing.Point(456, 12);
+            this.start.Name = "start";
+            this.start.Size = new System.Drawing.Size(75, 23);
+            this.start.TabIndex = 7;
+            this.start.Text = "&Start";
+            this.start.UseVisualStyleBackColor = true;
+            this.start.Click += new System.EventHandler(this.start_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(343, 15);
+            this.button1.Location = new System.Drawing.Point(340, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
+            this.button1.TabIndex = 6;
             this.button1.Text = "Detectar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // start
+            // comboBox1
             // 
-            this.start.Location = new System.Drawing.Point(459, 15);
-            this.start.Name = "start";
-            this.start.Size = new System.Drawing.Size(75, 23);
-            this.start.TabIndex = 2;
-            this.start.Text = "&Start";
-            this.start.UseVisualStyleBackColor = true;
-            this.start.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(564, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "label2";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(21, 12);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(313, 21);
+            this.comboBox1.TabIndex = 5;
             // 
             // pictureBoxVideo
             // 
-            this.pictureBoxVideo.Location = new System.Drawing.Point(1, 52);
+            this.pictureBoxVideo.Location = new System.Drawing.Point(1, 42);
             this.pictureBoxVideo.Name = "pictureBoxVideo";
-            this.pictureBoxVideo.Size = new System.Drawing.Size(835, 470);
-            this.pictureBoxVideo.TabIndex = 5;
+            this.pictureBoxVideo.Size = new System.Drawing.Size(835, 482);
+            this.pictureBoxVideo.TabIndex = 9;
             this.pictureBoxVideo.TabStop = false;
+            this.pictureBoxVideo.Click += new System.EventHandler(this.pictureBoxVideo_Click);
             // 
             // UIBuscarCamara
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 525);
+            this.ClientSize = new System.Drawing.Size(835, 524);
             this.Controls.Add(this.pictureBoxVideo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.start);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox1);
             this.Name = "UIBuscarCamara";
-            this.Text = "UIBuscarCamara";
+            this.Text = "Form1";
             this.Load += new System.EventHandler(this.UIBuscarCamara_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVideo)).EndInit();
             this.ResumeLayout(false);
@@ -105,11 +105,12 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button start;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button start;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.PictureBox pictureBoxVideo;
         private System.Windows.Forms.Timer timer1;
     }
 }
+
