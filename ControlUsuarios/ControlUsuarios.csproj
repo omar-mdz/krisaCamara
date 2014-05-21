@@ -51,7 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="ControladorUsuarios.cs" />
     <Compile Include="CrearUsuario.cs">
       <SubType>Form</SubType>
