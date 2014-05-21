@@ -37,6 +37,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.cb_resolutions = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVideo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,11 +106,31 @@
             this.label2.Size = new System.Drawing.Size(0, 13);
             this.label2.TabIndex = 12;
             // 
+            // cb_resolutions
+            // 
+            this.cb_resolutions.FormattingEnabled = true;
+            this.cb_resolutions.Location = new System.Drawing.Point(294, 39);
+            this.cb_resolutions.Name = "cb_resolutions";
+            this.cb_resolutions.Size = new System.Drawing.Size(121, 21);
+            this.cb_resolutions.TabIndex = 13;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(226, 42);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Resolusion:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
             // UIBuscarCamara
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(812, 576);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cb_resolutions);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
@@ -135,6 +157,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cb_resolutions;
+        private System.Windows.Forms.Label label3;
     }
 }
 

@@ -21,8 +21,6 @@ namespace CamaraTest
     public partial class UIBuscarCamara : Form
     {
 
-
-
         //Create webcam object
         VideoCaptureDevice videoSource;
 
@@ -38,6 +36,7 @@ namespace CamaraTest
         private void UIBuscarCamara_Load(object sender, EventArgs e)
         {
             getCamList();
+            showResolutionsSupported();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -58,6 +57,33 @@ namespace CamaraTest
             showVideo();
         }
 
+        private string getResolution()
+        {
+            string r = cb_resolutions.SelectedItem.ToString();
+            return r;
+        }
+
+        public void showResolutionsSupported()
+        {
+            FilterInfoCollection videosources = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            videoSource = new VideoCaptureDevice(videosources[0].MonikerString);
+            try
+            {
+                //Check if the video device provides a list of supported resolutions
+                if (videoSource.VideoCapabilities.Length > 0)
+                {
+                    //Search for the highest resolution
+                    for (int i = 0; i < videoSource.VideoCapabilities.Length; i++)
+                    {
+                        cb_resolutions.Items.Add(videoSource.VideoCapabilities[i].FrameSize.Width.ToString() + ";" + i.ToString());
+                    }
+                    // resolution = cb_resolutions.SelectedItem.ToString();
+                    // btn_switchResolution.Click += new EventHandler(switchResolution_Click);
+                    //videoSource.VideoResolution = videoSource.VideoCapabilities[Convert.ToInt32(Resolusion.Split(';')[0])];              
+                }
+            }
+            catch { }
+        }
 
         public void showVideo()
         {
@@ -66,6 +92,7 @@ namespace CamaraTest
                 if (DeviceExist)
                 {
                     videoSource = new VideoCaptureDevice(videoDevices[comboBox1.SelectedIndex].MonikerString);
+                    videoSource.VideoResolution = videoSource.VideoCapabilities[Convert.ToInt32(getResolution().Split(';')[1])];
                     videoSource.NewFrame += new NewFrameEventHandler(video_NewFrame);
                     videoSource.NewFrame += new NewFrameEventHandler(video_NewFrameSave);
                     CloseVideoSource();
@@ -182,6 +209,11 @@ namespace CamaraTest
             writer = new VideoFileWriter();
             writer.Open("VideoGenerado.avi", imgsave.Width, imgsave.Height, 25, VideoCodec.MPEG4);
             label1.Text = "Recording...";
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
 
 
