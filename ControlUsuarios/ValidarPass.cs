@@ -10,7 +10,7 @@ namespace Krisa.ControlUsuarios
     {
         public bool VerificarCuenta(string name, string pass)
         { // clase 
-            bool verifica = true;
+            bool verifica = false;
             var context = new KrisaDB();
 
             Encriptacion encripta = new Encriptacion();
@@ -22,7 +22,7 @@ namespace Krisa.ControlUsuarios
 
             foreach (var est in result)
             {
-                verifica = false;
+                verifica = true;
             }
 
             return verifica;
