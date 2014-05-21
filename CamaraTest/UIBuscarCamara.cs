@@ -42,9 +42,14 @@ namespace CamaraTest
 
         private void button1_Click(object sender, EventArgs e)
         {
-            writer.Close();
-            label1.Text = ""; 
+            try
+            {
+                writer.Close();
+                label1.Text = "";
+            }
+            catch { }
         }
+
 
         private void start_Click(object sender, EventArgs e)
         {
@@ -135,7 +140,9 @@ namespace CamaraTest
             {
                 writer.WriteVideoFrame((Bitmap)eventArgs.Frame.Clone());
             }
-            catch { }
+            catch (AccessViolationException) { }
+            catch (NullReferenceException) { }
+            catch (System.IO.IOException) { }
                 
         }
 
