@@ -88,8 +88,7 @@ namespace Krisa.ControlUsuarios
         {
             try
             {
-                MD5 md5Hash = MD5.Create();
-                string hash = Encriptar(md5Hash, txtPass.Text);
+                string hash = Encriptar(txtPass.Text);
 
                 var context = new KrisaDB();
                 var u = new KrisaDB.Usuario()
@@ -112,15 +111,21 @@ namespace Krisa.ControlUsuarios
             }
         }
 
-        public string Encriptar(MD5 md5Hash, string input)
+        public string Encriptar(string input)
         {
-            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
-            StringBuilder sBuilder = new StringBuilder();
-            for (int i = 0; i < data.Length; i++)
+            SHA256CryptoServiceProvider provider = new SHA256CryptoServiceProvider();
+
+            byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+            byte[] hashedBytes = provider.ComputeHash(inputBytes);
+
+            StringBuilder output = new StringBuilder();
+
+            for (int i = 0; i < hashedBytes.Length; i++)
             {
-                sBuilder.Append(data[i].ToString("x2"));
+                output.Append(hashedBytes[i].ToString("x2").ToLower());
             }
-            return sBuilder.ToString();
+
+            return output.ToString();
         }
     }
 }
