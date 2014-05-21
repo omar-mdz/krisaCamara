@@ -164,12 +164,12 @@ namespace CamaraTest
 
         }
 
-
+        //Falta Cargar los dll  en git
         VideoFileWriter writer;
         private void button2_Click(object sender, EventArgs e)
         {
             writer = new VideoFileWriter();
-            writer.Open("test.avi", imgsave.Width, imgsave.Height, 12, VideoCodec.MPEG4);
+            writer.Open("VideoGenerado.avi", imgsave.Width, imgsave.Height, 25, VideoCodec.MPEG4);
             label1.Text = "Recording...";
         }
 
