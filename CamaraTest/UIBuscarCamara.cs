@@ -135,6 +135,7 @@ namespace CamaraTest
         Bitmap imgsave;
         private void video_NewFrameSave(object sender, NewFrameEventArgs eventArgs)
         { 
+            //
             imgsave = (Bitmap)eventArgs.Frame.Clone();
             try
             {
