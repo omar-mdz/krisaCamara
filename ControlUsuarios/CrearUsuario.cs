@@ -23,66 +23,57 @@ namespace Krisa.ControlUsuarios
             InitializeComponent();
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (validarCampos())
+            if (ValidarCampos())
             {
-                if (verificarCuenta())
+                if (VerificarCuenta())
                 {
-                    guardar();
-                    limpiar();
-                    MessageBox.Show("Usuario insertado con exito");
+                    Guardar();
+                    Limpiar();
+                    MessageBox.Show("Usuario creado con exito.");
                 }
                 else
                 {
-                    MessageBox.Show("El nombre del usuario ya esta registrado, ocupe otro");
+                    MessageBox.Show("El nombre de usuario ya esta registrado.");
                 }
             }
         }
 
-        public void limpiar() {
-            TextBox1.Text = "";
-            TextBox2.Text = "";
-            TextBox3.Text = "";
-            TextBox4.Text = "";
+        public void Limpiar() {
+            txtUsuario.Text = "";
+            txtNombreCompleto.Text = "";
+            txtTelefono.Text = "";
+            txtEmail.Text = "";
+            txtPass.Text = "";
+            txtPassConfirmacion.Text = "";
         }
 
-        public Boolean validarCampos() {
-            Boolean ban = true;
-            if (TextBox1.Text == "") {
-                MessageBox.Show("El campo de usuario esta vacio");
-                ban = false;
-            }
-            if (TextBox2.Text == "")
-            {
-                MessageBox.Show("El campo de nombre completo esta vacio");
-                ban = false;
-            }
-            if (TextBox3.Text == "")
-            {
-                MessageBox.Show("El campo de contraseña esta vacio");
-                ban = false;
-            }
-            if (TextBox4.Text == "")
-            {
-                MessageBox.Show("El campo de confirmar contraseña esta vacio");
-                ban = false;
-            }
+        public bool ValidarCampos() {
+            bool ban = true;
 
-            if (TextBox4.Text != TextBox3.Text) {
-                MessageBox.Show("Las contraseñas no coinciden");
+            if (txtUsuario.Text.Trim() == "" || txtNombreCompleto.Text.Trim() == "" || txtTelefono.Text.Trim() == "" || txtEmail.Text.Trim() == "" || txtPass.Text == "" || txtPassConfirmacion.Text == "")
+            {
+                MessageBox.Show("Todos los campos son obligatorios. Intente de Nuevo.");
                 ban = false;
             }
-
+            else
+            {
+                if (txtPass.Text != txtPassConfirmacion.Text)
+                {
+                    MessageBox.Show("La contraseña no coincide. Intente de Nuevo.");
+                    ban = false;
+                }
+            }
             return ban;
         }
 
-        public Boolean verificarCuenta() {
-            Boolean verifica = true;
+        public bool VerificarCuenta() {
+            bool verifica = true;
             var context = new KrisaDB();
 
             var result = from es in context.Usuarios
-                         where es.Nusuario == TextBox1.Text
+                         where es.Nombre_Usuario == txtUsuario.Text
                          select es;
 
             foreach (var est in result)
@@ -93,19 +84,22 @@ namespace Krisa.ControlUsuarios
             return verifica;
         }
 
-        public void guardar()
+        public void Guardar()
         {
             try
             {
                 MD5 md5Hash = MD5.Create();
-                string hash = encriptar(md5Hash, TextBox3.Text);
+                string hash = Encriptar(md5Hash, txtPass.Text);
 
                 var context = new KrisaDB();
                 var u = new KrisaDB.Usuario()
                 {
-                    Nusuario = TextBox1.Text,
-                    Nombre = TextBox2.Text,
-                    Pass = hash
+                    Nombre_Usuario = txtUsuario.Text,
+                    Nombre_Completo = txtNombreCompleto.Text,
+                    Pass = hash,
+                    Telefono = txtTelefono.Text,
+                    Email = txtEmail.Text,
+                    isActivo = true
                 };
 
                 context.Usuarios.Add(u);
@@ -118,7 +112,7 @@ namespace Krisa.ControlUsuarios
             }
         }
 
-        public string encriptar(MD5 md5Hash, string input)
+        public string Encriptar(MD5 md5Hash, string input)
         {
             byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
             StringBuilder sBuilder = new StringBuilder();
@@ -128,10 +122,5 @@ namespace Krisa.ControlUsuarios
             }
             return sBuilder.ToString();
         }
-
-        private void Button2_Click(object sender, EventArgs e)
-        {
-           
-        }            
     }
 }

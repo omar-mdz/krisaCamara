@@ -21,9 +21,12 @@ namespace Krisa.Datos
       public class Usuario
       {
         public int ID { get; set; }
-        public String Nusuario { get; set; }
-        public String Nombre { get; set; }
-        public String Pass { get; set; }
+        public string Nombre_Usuario { get; set; }
+        public string Nombre_Completo { get; set; }
+        public string Pass { get; set; }
+        public string Email { get; set; }
+        public string Telefono { get; set; }
+        public bool isActivo { get; set; }
       }
 
        //public KrisaDB()
