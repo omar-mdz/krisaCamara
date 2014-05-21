@@ -102,14 +102,30 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="codec\avcodec-53.dll" />
-    <Content Include="codec\avdevice-53.dll" />
-    <Content Include="codec\avfilter-2.dll" />
-    <Content Include="codec\avformat-53.dll" />
-    <Content Include="codec\avutil-51.dll" />
-    <Content Include="codec\postproc-52.dll" />
-    <Content Include="codec\swresample-0.dll" />
-    <Content Include="codec\swscale-2.dll" />
+    <None Include="avcodec-53.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="avdevice-53.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="avfilter-2.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="avformat-53.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="avutil-51.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="postproc-52.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="swresample-0.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="swscale-2.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
