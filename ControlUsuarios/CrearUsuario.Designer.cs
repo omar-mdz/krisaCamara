@@ -48,7 +48,7 @@
             this.btnSuspenderUsuario = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnModificarUsuario = new System.Windows.Forms.Button();
+            this.btnHistorialUsuario = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.GroupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -93,7 +93,7 @@
             this.txtTelefono.Margin = new System.Windows.Forms.Padding(4);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(232, 25);
-            this.txtTelefono.TabIndex = 32;
+            this.txtTelefono.TabIndex = 15;
             // 
             // label6
             // 
@@ -113,7 +113,7 @@
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(232, 25);
-            this.txtEmail.TabIndex = 30;
+            this.txtEmail.TabIndex = 14;
             // 
             // btnBuscarUsuario
             // 
@@ -190,8 +190,9 @@
             this.txtPassConfirmacion.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassConfirmacion.Name = "txtPassConfirmacion";
             this.txtPassConfirmacion.Size = new System.Drawing.Size(232, 25);
-            this.txtPassConfirmacion.TabIndex = 15;
+            this.txtPassConfirmacion.TabIndex = 17;
             this.txtPassConfirmacion.UseSystemPasswordChar = true;
+            this.txtPassConfirmacion.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassConfirmacion_KeyDown);
             // 
             // txtUsuario
             // 
@@ -209,7 +210,7 @@
             this.txtPass.Margin = new System.Windows.Forms.Padding(4);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(232, 25);
-            this.txtPass.TabIndex = 14;
+            this.txtPass.TabIndex = 16;
             this.txtPass.UseSystemPasswordChar = true;
             // 
             // txtNombreCompleto
@@ -248,7 +249,7 @@
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancelar.Location = new System.Drawing.Point(329, 500);
+            this.btnCancelar.Location = new System.Drawing.Point(308, 500);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(85, 36);
@@ -264,31 +265,31 @@
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(85, 36);
-            this.btnGuardar.TabIndex = 28;
+            this.btnGuardar.TabIndex = 18;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // btnModificarUsuario
+            // btnHistorialUsuario
             // 
-            this.btnModificarUsuario.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnModificarUsuario.Image = ((System.Drawing.Image)(resources.GetObject("btnModificarUsuario.Image")));
-            this.btnModificarUsuario.Location = new System.Drawing.Point(118, 15);
-            this.btnModificarUsuario.Name = "btnModificarUsuario";
-            this.btnModificarUsuario.Size = new System.Drawing.Size(110, 42);
-            this.btnModificarUsuario.TabIndex = 35;
-            this.btnModificarUsuario.Text = "Modificar Usuario";
-            this.btnModificarUsuario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnModificarUsuario.UseVisualStyleBackColor = false;
-            this.btnModificarUsuario.Click += new System.EventHandler(this.btnModificarUsuario_Click);
+            this.btnHistorialUsuario.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnHistorialUsuario.Image = ((System.Drawing.Image)(resources.GetObject("btnHistorialUsuario.Image")));
+            this.btnHistorialUsuario.Location = new System.Drawing.Point(118, 15);
+            this.btnHistorialUsuario.Name = "btnHistorialUsuario";
+            this.btnHistorialUsuario.Size = new System.Drawing.Size(110, 42);
+            this.btnHistorialUsuario.TabIndex = 35;
+            this.btnHistorialUsuario.Text = "Historial Usuario";
+            this.btnHistorialUsuario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnHistorialUsuario.UseVisualStyleBackColor = false;
+            this.btnHistorialUsuario.Click += new System.EventHandler(this.btnHistorialUsuario_Click);
             // 
             // CrearUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(483, 549);
-            this.Controls.Add(this.btnModificarUsuario);
+            this.Controls.Add(this.btnHistorialUsuario);
             this.Controls.Add(this.PictureBox1);
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.btnReacticvarUsuario);
@@ -326,7 +327,7 @@
         internal System.Windows.Forms.TextBox txtTelefono;
         internal System.Windows.Forms.Label label6;
         internal System.Windows.Forms.TextBox txtEmail;
-        internal System.Windows.Forms.Button btnModificarUsuario;
+        internal System.Windows.Forms.Button btnHistorialUsuario;
 
     }
 }

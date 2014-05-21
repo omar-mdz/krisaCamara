@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Krisa.ControlUsuarios;
 
 namespace Krisa.ControlUsuarios.Test
 {
@@ -13,18 +13,20 @@ namespace Krisa.ControlUsuarios.Test
         /// Punto de entrada principal para la aplicación.
         /// </summary>
         /// 
-       
+        private static UIModificar_Usuario UILogin_Usuario;
+        
 
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Krisa.ControlUsuarios.CrearUsuario());
+            //Application.Run(new CrearUsuario());
+
+            UILogin_Usuario = new UIModificar_Usuario();
+            UILogin_Usuario.ShowDialog();
 
             
-
-          
         }
     }
 }
