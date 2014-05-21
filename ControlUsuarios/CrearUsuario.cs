@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading.Tasks;
-using System.Security.Cryptography;
+
 
 
 namespace Krisa.ControlUsuarios
@@ -23,13 +23,13 @@ namespace Krisa.ControlUsuarios
             InitializeComponent();
         }
 
-        private UIModificar_Usuario UIModificar_Usuario;
-
-        private void btnGuardar_Click(object sender, EventArgs e)
+        public void insertar()
         {
             if (ValidarCampos())
             {
-                if (VerificarCuenta())
+                ControladorUsuarios verifica = new ControladorUsuarios();
+
+                if (verifica.VerificarCuenta(txtUsuario.Text.Trim()))
                 {
                     Guardar();
                     Limpiar();
@@ -40,6 +40,11 @@ namespace Krisa.ControlUsuarios
                     MessageBox.Show("El nombre de usuario ya esta registrado.");
                 }
             }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            insertar();
         }
 
         public void Limpiar() {
@@ -70,27 +75,13 @@ namespace Krisa.ControlUsuarios
             return ban;
         }
 
-        public bool VerificarCuenta() {
-            bool verifica = true;
-            var context = new KrisaDB();
-
-            var result = from es in context.Usuarios
-                         where es.Nombre_Usuario == txtUsuario.Text
-                         select es;
-
-            foreach (var est in result)
-            {
-                verifica = false;
-            }
-
-            return verifica;
-        }
-
-        public void Guardar()
+      
+        public void Guardar() 
         {
             try
             {
-                string hash = Encriptar(txtPass.Text);
+                Encriptacion encripta = new Encriptacion();
+                string hash = encripta.Encriptar(txtPass.Text);
 
                 var u = new KrisaDB.Usuario()
                 {
@@ -113,43 +104,24 @@ namespace Krisa.ControlUsuarios
             }
         }
 
-        public string Encriptar(string input)
-        {
-            SHA256CryptoServiceProvider provider = new SHA256CryptoServiceProvider();
-
-            byte[] inputBytes = Encoding.UTF8.GetBytes(input);
-            byte[] hashedBytes = provider.ComputeHash(inputBytes);
-
-            StringBuilder output = new StringBuilder();
-
-            for (int i = 0; i < hashedBytes.Length; i++)
-            {
-                output.Append(hashedBytes[i].ToString("x2").ToLower());
-            }
-
-            return output.ToString();
-        }
-
-        private void btnModificarUsuario_Click(object sender, EventArgs e)
-        {
-            this.MostrarOcultarFormulario(false);
-            this.UIModificar_Usuario = new UIModificar_Usuario();
-            this.UIModificar_Usuario.pDelVisibilidadFormulario += new VisibilidadFormulario(this.MostrarOcultarFormulario);
-            this.UIModificar_Usuario.ShowDialog();
-        }
-
-        private void MostrarOcultarFormulario(bool abolFormulario)
-        {
-            this.ShowInTaskbar = abolFormulario;
-            this.SetVisibleCore(abolFormulario);
-        }
-
+      
         private void btnCancelar_Click(object sender, EventArgs e)
         {
           Limpiar();
           this.Close();
-          MessageBox.Show("seguro que desea cancelar");
+        }
+
+        private void txtPassConfirmacion_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) {
+                insertar();
+            }
+        }
+
+        private void btnHistorialUsuario_Click(object sender, EventArgs e)
+        {
 
         }
+
     }
 }

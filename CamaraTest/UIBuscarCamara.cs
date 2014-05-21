@@ -141,10 +141,7 @@ namespace CamaraTest
             imgsave = (Bitmap)eventArgs.Frame.Clone();
             try
             {
-                if (writer.IsOpen)
-                {
-                    writer.WriteVideoFrame((Bitmap)eventArgs.Frame.Clone());
-                }
+                writer.WriteVideoFrame((Bitmap)eventArgs.Frame.Clone());
             }
             catch (AccessViolationException) { }
             catch (NullReferenceException) { }

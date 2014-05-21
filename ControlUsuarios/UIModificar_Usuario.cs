@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Krisa.Datos;
+using System.Data.Entity;
+	
 //using Control_Usuarios.Delegados;
 
 namespace Krisa.ControlUsuarios
@@ -41,7 +44,50 @@ namespace Krisa.ControlUsuarios
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            //aqui de necesita el codigo
+
+            if (txtUsuario.Text.Trim() != "" && txtPass.Text.Trim() != "" && txtConfirmar.Text.Trim() != "" && txtNuevoPass.Text.Trim() != "")
+            {
+                ValidarPass valida = new ValidarPass();
+
+                if (valida.VerificarCuenta(txtUsuario.Text, txtUsuario.Text))
+                {
+                    if (txtNuevoPass.Text.Equals(txtConfirmar.Text))
+                    {
+                        var context = new KrisaDB();
+
+                        Encriptacion encripta = new Encriptacion();
+                        string hash = encripta.Encriptar(txtPass.Text);
+                        string hashNuevo = encripta.Encriptar(txtNuevoPass.Text);
+
+                        var cambio = from es in context.Usuarios
+                                     where es.Nombre_Usuario == txtUsuario.Text && es.Pass == hash
+                                     select es;
+       
+                        cambio.First().Pass=hashNuevo;
+                        context.SaveChanges();
+                        context.Dispose();
+
+                        MessageBox.Show("Su contraseña fue modificada con exito");
+
+                        txtPass.Text = "";
+                        txtNuevoPass.Text = "";
+                        txtConfirmar.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("La nueva contraseña no coincide");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("La contraseña es incorrecta");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Todos los campos son obligatorios. Intente de nuevo");
+            }
         }
+         
     }
 }
