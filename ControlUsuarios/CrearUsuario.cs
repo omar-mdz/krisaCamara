@@ -23,6 +23,8 @@ namespace Krisa.ControlUsuarios
             InitializeComponent();
         }
 
+        private UIModificar_Usuario UIModificar_Usuario;
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (ValidarCampos())
@@ -90,7 +92,6 @@ namespace Krisa.ControlUsuarios
             {
                 string hash = Encriptar(txtPass.Text);
 
-                var context = new KrisaDB();
                 var u = new KrisaDB.Usuario()
                 {
                     Nombre_Usuario = txtUsuario.Text,
@@ -101,6 +102,7 @@ namespace Krisa.ControlUsuarios
                     isActivo = true
                 };
 
+                var context = new KrisaDB();
                 context.Usuarios.Add(u);
                 context.SaveChanges();
                 context.Dispose();
@@ -126,6 +128,28 @@ namespace Krisa.ControlUsuarios
             }
 
             return output.ToString();
+        }
+
+        private void btnModificarUsuario_Click(object sender, EventArgs e)
+        {
+            this.MostrarOcultarFormulario(false);
+            this.UIModificar_Usuario = new UIModificar_Usuario();
+            this.UIModificar_Usuario.pDelVisibilidadFormulario += new VisibilidadFormulario(this.MostrarOcultarFormulario);
+            this.UIModificar_Usuario.ShowDialog();
+        }
+
+        private void MostrarOcultarFormulario(bool abolFormulario)
+        {
+            this.ShowInTaskbar = abolFormulario;
+            this.SetVisibleCore(abolFormulario);
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+          Limpiar();
+          this.Close();
+          MessageBox.Show("seguro que desea cancelar");
+
         }
     }
 }

@@ -57,6 +57,23 @@
     <Compile Include="CrearUsuario.Designer.cs">
       <DependentUpon>CrearUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="UIModificar_Usuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIModificar_Usuario.designer.cs">
+      <DependentUpon>UIModificar_Usuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UILogin_Usuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UILogin_Usuario.designer.cs">
+      <DependentUpon>UILogin_Usuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,10 +86,35 @@
     <EmbeddedResource Include="CrearUsuario.resx">
       <DependentUpon>CrearUsuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UIModificar_Usuario.resx">
+      <DependentUpon>UIModificar_Usuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UILogin_Usuario.resx">
+      <DependentUpon>UILogin_Usuario.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Accept_User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add_User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit_User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Remove_User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search_User.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

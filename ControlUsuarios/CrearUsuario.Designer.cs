@@ -44,11 +44,11 @@
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtPass = new System.Windows.Forms.TextBox();
             this.txtNombreCompleto = new System.Windows.Forms.TextBox();
-            this.btnReacticvarCuenta = new System.Windows.Forms.Button();
-            this.btnSuspenderCuenta = new System.Windows.Forms.Button();
-            this.btnModificarCuenta = new System.Windows.Forms.Button();
+            this.btnReacticvarUsuario = new System.Windows.Forms.Button();
+            this.btnSuspenderUsuario = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnModificarUsuario = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.GroupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -102,7 +102,7 @@
             this.label6.Location = new System.Drawing.Point(23, 223);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(150, 17);
+            this.label6.Size = new System.Drawing.Size(151, 17);
             this.label6.TabIndex = 31;
             this.label6.Text = "*Telefono de Contacto:";
             // 
@@ -221,42 +221,29 @@
             this.txtNombreCompleto.Size = new System.Drawing.Size(232, 25);
             this.txtNombreCompleto.TabIndex = 13;
             // 
-            // btnReacticvarCuenta
+            // btnReacticvarUsuario
             // 
-            this.btnReacticvarCuenta.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnReacticvarCuenta.Image = ((System.Drawing.Image)(resources.GetObject("btnReacticvarCuenta.Image")));
-            this.btnReacticvarCuenta.Location = new System.Drawing.Point(347, 17);
-            this.btnReacticvarCuenta.Name = "btnReacticvarCuenta";
-            this.btnReacticvarCuenta.Size = new System.Drawing.Size(102, 41);
-            this.btnReacticvarCuenta.TabIndex = 32;
-            this.btnReacticvarCuenta.Text = "Reactivar Cuenta";
-            this.btnReacticvarCuenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnReacticvarCuenta.UseVisualStyleBackColor = false;
+            this.btnReacticvarUsuario.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnReacticvarUsuario.Image = ((System.Drawing.Image)(resources.GetObject("btnReacticvarUsuario.Image")));
+            this.btnReacticvarUsuario.Location = new System.Drawing.Point(347, 17);
+            this.btnReacticvarUsuario.Name = "btnReacticvarUsuario";
+            this.btnReacticvarUsuario.Size = new System.Drawing.Size(102, 41);
+            this.btnReacticvarUsuario.TabIndex = 32;
+            this.btnReacticvarUsuario.Text = "Reactivar Usuario";
+            this.btnReacticvarUsuario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReacticvarUsuario.UseVisualStyleBackColor = false;
             // 
-            // btnSuspenderCuenta
+            // btnSuspenderUsuario
             // 
-            this.btnSuspenderCuenta.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSuspenderCuenta.Image = ((System.Drawing.Image)(resources.GetObject("btnSuspenderCuenta.Image")));
-            this.btnSuspenderCuenta.Location = new System.Drawing.Point(231, 15);
-            this.btnSuspenderCuenta.Name = "btnSuspenderCuenta";
-            this.btnSuspenderCuenta.Size = new System.Drawing.Size(110, 42);
-            this.btnSuspenderCuenta.TabIndex = 31;
-            this.btnSuspenderCuenta.Text = "Suspender Cuenta";
-            this.btnSuspenderCuenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSuspenderCuenta.UseVisualStyleBackColor = false;
-            // 
-            // btnModificarCuenta
-            // 
-            this.btnModificarCuenta.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnModificarCuenta.Image = ((System.Drawing.Image)(resources.GetObject("btnModificarCuenta.Image")));
-            this.btnModificarCuenta.Location = new System.Drawing.Point(135, 15);
-            this.btnModificarCuenta.Name = "btnModificarCuenta";
-            this.btnModificarCuenta.Size = new System.Drawing.Size(90, 43);
-            this.btnModificarCuenta.TabIndex = 30;
-            this.btnModificarCuenta.Text = "Modificar Cuenta";
-            this.btnModificarCuenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnModificarCuenta.UseVisualStyleBackColor = false;
-            this.btnModificarCuenta.UseWaitCursor = true;
+            this.btnSuspenderUsuario.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSuspenderUsuario.Image = ((System.Drawing.Image)(resources.GetObject("btnSuspenderUsuario.Image")));
+            this.btnSuspenderUsuario.Location = new System.Drawing.Point(231, 15);
+            this.btnSuspenderUsuario.Name = "btnSuspenderUsuario";
+            this.btnSuspenderUsuario.Size = new System.Drawing.Size(110, 42);
+            this.btnSuspenderUsuario.TabIndex = 31;
+            this.btnSuspenderUsuario.Text = "Suspender Usuario";
+            this.btnSuspenderUsuario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSuspenderUsuario.UseVisualStyleBackColor = false;
             // 
             // btnCancelar
             // 
@@ -268,6 +255,7 @@
             this.btnCancelar.TabIndex = 29;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -282,19 +270,33 @@
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // btnModificarUsuario
+            // 
+            this.btnModificarUsuario.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnModificarUsuario.Image = ((System.Drawing.Image)(resources.GetObject("btnModificarUsuario.Image")));
+            this.btnModificarUsuario.Location = new System.Drawing.Point(118, 15);
+            this.btnModificarUsuario.Name = "btnModificarUsuario";
+            this.btnModificarUsuario.Size = new System.Drawing.Size(110, 42);
+            this.btnModificarUsuario.TabIndex = 35;
+            this.btnModificarUsuario.Text = "Modificar Usuario";
+            this.btnModificarUsuario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnModificarUsuario.UseVisualStyleBackColor = false;
+            this.btnModificarUsuario.Click += new System.EventHandler(this.btnModificarUsuario_Click);
+            // 
             // CrearUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(483, 549);
+            this.Controls.Add(this.btnModificarUsuario);
             this.Controls.Add(this.PictureBox1);
             this.Controls.Add(this.GroupBox1);
-            this.Controls.Add(this.btnReacticvarCuenta);
-            this.Controls.Add(this.btnSuspenderCuenta);
-            this.Controls.Add(this.btnModificarCuenta);
+            this.Controls.Add(this.btnReacticvarUsuario);
+            this.Controls.Add(this.btnSuspenderUsuario);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Name = "CrearUsuario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Crear usuario";
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             this.GroupBox1.ResumeLayout(false);
@@ -316,15 +318,15 @@
         internal System.Windows.Forms.TextBox txtUsuario;
         internal System.Windows.Forms.TextBox txtPass;
         internal System.Windows.Forms.TextBox txtNombreCompleto;
-        internal System.Windows.Forms.Button btnReacticvarCuenta;
-        internal System.Windows.Forms.Button btnSuspenderCuenta;
-        internal System.Windows.Forms.Button btnModificarCuenta;
+        internal System.Windows.Forms.Button btnReacticvarUsuario;
+        internal System.Windows.Forms.Button btnSuspenderUsuario;
         internal System.Windows.Forms.Button btnCancelar;
         internal System.Windows.Forms.Button btnGuardar;
         internal System.Windows.Forms.Label label5;
         internal System.Windows.Forms.TextBox txtTelefono;
         internal System.Windows.Forms.Label label6;
         internal System.Windows.Forms.TextBox txtEmail;
+        internal System.Windows.Forms.Button btnModificarUsuario;
 
     }
 }
