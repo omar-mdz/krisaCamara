@@ -47,7 +47,9 @@ namespace CamaraTest
                 writer.Close();
                 label1.Text = "";
             }
-            catch { }
+            catch (AccessViolationException) { }
+            catch (NullReferenceException) { }
+            catch (System.IO.IOException) { }
         }
 
 
@@ -147,6 +149,7 @@ namespace CamaraTest
             catch (AccessViolationException) { }
             catch (NullReferenceException) { }
             catch (System.IO.IOException) { }
+
                 
         }
 
