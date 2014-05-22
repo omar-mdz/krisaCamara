@@ -99,7 +99,7 @@ namespace CamaraTest
 
         }
 
-        private void getCamList()
+        private void getCamList() //combo agregar camara
         {
             try
             {
