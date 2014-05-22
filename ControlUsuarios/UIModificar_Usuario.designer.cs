@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.gbxDatosUsuario = new System.Windows.Forms.GroupBox();
+            this.lblConfirmar = new System.Windows.Forms.Label();
+            this.txtConfirmar = new System.Windows.Forms.TextBox();
+            this.txtUsuario = new System.Windows.Forms.TextBox();
             this.Label4 = new System.Windows.Forms.Label();
             this.Label3 = new System.Windows.Forms.Label();
             this.txtNuevoPass = new System.Windows.Forms.TextBox();
@@ -37,9 +40,6 @@
             this.pbxImagen = new System.Windows.Forms.PictureBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.lblConfirmar = new System.Windows.Forms.Label();
-            this.txtConfirmar = new System.Windows.Forms.TextBox();
             this.gbxDatosUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).BeginInit();
             this.SuspendLayout();
@@ -54,110 +54,13 @@
             this.gbxDatosUsuario.Controls.Add(this.txtNuevoPass);
             this.gbxDatosUsuario.Controls.Add(this.txtPass);
             this.gbxDatosUsuario.Controls.Add(this.Label1);
+            this.gbxDatosUsuario.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxDatosUsuario.Location = new System.Drawing.Point(135, 8);
             this.gbxDatosUsuario.Name = "gbxDatosUsuario";
             this.gbxDatosUsuario.Size = new System.Drawing.Size(258, 260);
             this.gbxDatosUsuario.TabIndex = 17;
             this.gbxDatosUsuario.TabStop = false;
             this.gbxDatosUsuario.Text = "Modificar Contraseña";
-            // 
-            // Label4
-            // 
-            this.Label4.AutoSize = true;
-            this.Label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label4.Location = new System.Drawing.Point(6, 141);
-            this.Label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(130, 17);
-            this.Label4.TabIndex = 34;
-            this.Label4.Text = "*Nueva Contraseña:";
-            // 
-            // Label3
-            // 
-            this.Label3.AutoSize = true;
-            this.Label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.Location = new System.Drawing.Point(7, 80);
-            this.Label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(142, 17);
-            this.Label3.TabIndex = 35;
-            this.Label3.Text = "*Contraseña Anterior:";
-            // 
-            // txtNuevoPass
-            // 
-            this.txtNuevoPass.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNuevoPass.Location = new System.Drawing.Point(10, 162);
-            this.txtNuevoPass.Margin = new System.Windows.Forms.Padding(4);
-            this.txtNuevoPass.Name = "txtNuevoPass";
-            this.txtNuevoPass.Size = new System.Drawing.Size(232, 25);
-            this.txtNuevoPass.TabIndex = 6;
-            this.txtNuevoPass.UseSystemPasswordChar = true;
-            // 
-            // txtPass
-            // 
-            this.txtPass.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPass.Location = new System.Drawing.Point(10, 101);
-            this.txtPass.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(232, 25);
-            this.txtPass.TabIndex = 5;
-            this.txtPass.UseSystemPasswordChar = true;
-            // 
-            // Label1
-            // 
-            this.Label1.AutoSize = true;
-            this.Label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.Location = new System.Drawing.Point(7, 27);
-            this.Label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(65, 17);
-            this.Label1.TabIndex = 4;
-            this.Label1.Text = "*Usuario:";
-            // 
-            // pbxImagen
-            // 
-            this.pbxImagen.BackgroundImage = global::Krisa.ControlUsuarios.Properties.Resources.Edit_User;
-            this.pbxImagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbxImagen.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbxImagen.Location = new System.Drawing.Point(10, 8);
-            this.pbxImagen.Name = "pbxImagen";
-            this.pbxImagen.Size = new System.Drawing.Size(119, 117);
-            this.pbxImagen.TabIndex = 12;
-            this.pbxImagen.TabStop = false;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancelar.Location = new System.Drawing.Point(306, 296);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(85, 36);
-            this.btnCancelar.TabIndex = 9;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnGuardar.Location = new System.Drawing.Point(138, 296);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(85, 36);
-            this.btnGuardar.TabIndex = 8;
-            this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // txtUsuario
-            // 
-            this.txtUsuario.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(10, 48);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(4);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(232, 25);
-            this.txtUsuario.TabIndex = 1;
             // 
             // lblConfirmar
             // 
@@ -177,8 +80,105 @@
             this.txtConfirmar.Margin = new System.Windows.Forms.Padding(4);
             this.txtConfirmar.Name = "txtConfirmar";
             this.txtConfirmar.Size = new System.Drawing.Size(232, 25);
-            this.txtConfirmar.TabIndex = 7;
+            this.txtConfirmar.TabIndex = 4;
             this.txtConfirmar.UseSystemPasswordChar = true;
+            // 
+            // txtUsuario
+            // 
+            this.txtUsuario.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsuario.Location = new System.Drawing.Point(10, 48);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(232, 25);
+            this.txtUsuario.TabIndex = 1;
+            // 
+            // Label4
+            // 
+            this.Label4.AutoSize = true;
+            this.Label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label4.Location = new System.Drawing.Point(6, 141);
+            this.Label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Label4.Name = "Label4";
+            this.Label4.Size = new System.Drawing.Size(130, 17);
+            this.Label4.TabIndex = 34;
+            this.Label4.Text = "*Nueva Contraseña:";
+            // 
+            // Label3
+            // 
+            this.Label3.AutoSize = true;
+            this.Label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.Location = new System.Drawing.Point(7, 80);
+            this.Label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Label3.Name = "Label3";
+            this.Label3.Size = new System.Drawing.Size(143, 17);
+            this.Label3.TabIndex = 35;
+            this.Label3.Text = "*Contraseña Anterior:";
+            // 
+            // txtNuevoPass
+            // 
+            this.txtNuevoPass.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNuevoPass.Location = new System.Drawing.Point(10, 162);
+            this.txtNuevoPass.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNuevoPass.Name = "txtNuevoPass";
+            this.txtNuevoPass.Size = new System.Drawing.Size(232, 25);
+            this.txtNuevoPass.TabIndex = 3;
+            this.txtNuevoPass.UseSystemPasswordChar = true;
+            // 
+            // txtPass
+            // 
+            this.txtPass.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPass.Location = new System.Drawing.Point(10, 101);
+            this.txtPass.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPass.Name = "txtPass";
+            this.txtPass.Size = new System.Drawing.Size(232, 25);
+            this.txtPass.TabIndex = 2;
+            this.txtPass.UseSystemPasswordChar = true;
+            // 
+            // Label1
+            // 
+            this.Label1.AutoSize = true;
+            this.Label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label1.Location = new System.Drawing.Point(7, 27);
+            this.Label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Label1.Name = "Label1";
+            this.Label1.Size = new System.Drawing.Size(65, 17);
+            this.Label1.TabIndex = 4;
+            this.Label1.Text = "*Usuario:";
+            // 
+            // pbxImagen
+            // 
+            this.pbxImagen.BackgroundImage = global::Krisa.ControlUsuarios.Properties.Resources.Edit_User;
+            this.pbxImagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbxImagen.Location = new System.Drawing.Point(10, 8);
+            this.pbxImagen.Name = "pbxImagen";
+            this.pbxImagen.Size = new System.Drawing.Size(119, 117);
+            this.pbxImagen.TabIndex = 12;
+            this.pbxImagen.TabStop = false;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnCancelar.Location = new System.Drawing.Point(306, 296);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(85, 36);
+            this.btnCancelar.TabIndex = 6;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnGuardar.Location = new System.Drawing.Point(138, 296);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(85, 36);
+            this.btnGuardar.TabIndex = 5;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // UIModificar_Usuario
             // 
@@ -195,7 +195,7 @@
             this.MinimizeBox = false;
             this.Name = "UIModificar_Usuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Control de Usuarios - Modificar contraseña";
+            this.Text = "Modificar Contraseña";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmControlUsuarioModificar_FormClosed);
             this.gbxDatosUsuario.ResumeLayout(false);
             this.gbxDatosUsuario.PerformLayout();

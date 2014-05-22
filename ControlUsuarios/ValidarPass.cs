@@ -9,7 +9,7 @@ namespace Krisa.ControlUsuarios
     class ValidarPass
     {
         public bool VerificarCuenta(string name, string pass)
-        { // clase 
+        { // clase para realizar la verificacion de una cuenta existente en la BD
             bool verifica = false;
             var context = new KrisaDB();
 

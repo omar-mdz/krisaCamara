@@ -8,7 +8,8 @@ namespace Krisa.ControlUsuarios
 {
     class Encriptacion
     {
-        public string Encriptar(string input) //clase
+        public string Encriptar(string input)
+        //clase para realizar la encriptacion de la contraseña usando SHA256
         {
             SHA256CryptoServiceProvider provider = new SHA256CryptoServiceProvider();
 

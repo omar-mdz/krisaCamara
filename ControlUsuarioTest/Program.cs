@@ -13,7 +13,7 @@ namespace Krisa.ControlUsuarios.Test
         /// Punto de entrada principal para la aplicación.
         /// </summary>
         /// 
-        private static UIModificar_Usuario UILogin_Usuario;
+        private static CrearUsuario UILogin_Usuario;
         
 
         [STAThread]
@@ -23,7 +23,7 @@ namespace Krisa.ControlUsuarios.Test
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new CrearUsuario());
 
-            UILogin_Usuario = new UIModificar_Usuario();
+            UILogin_Usuario = new CrearUsuario();
             UILogin_Usuario.ShowDialog();
 
             

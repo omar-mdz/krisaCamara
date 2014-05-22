@@ -76,11 +76,17 @@ namespace Krisa.ControlUsuarios
                     else
                     {
                         MessageBox.Show("La nueva contraseña no coincide");
+                        txtPass.Text = "";
+                        txtNuevoPass.Text = "";
+                        txtConfirmar.Text = "";
                     }
                 }
                 else
                 {
                     MessageBox.Show("La contraseña es incorrecta");
+                    txtPass.Text = "";
+                    txtNuevoPass.Text = "";
+                    txtConfirmar.Text = "";
                 }
             }
             else
