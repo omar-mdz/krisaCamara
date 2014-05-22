@@ -49,7 +49,7 @@ namespace Krisa.ControlUsuarios
             {
                 ValidarPass valida = new ValidarPass();
 
-                if (valida.VerificarCuenta(txtUsuario.Text, txtUsuario.Text))
+                if (valida.VerificarCuenta(txtUsuario.Text, txtPass.Text))
                 {
                     if (txtNuevoPass.Text.Equals(txtConfirmar.Text))
                     {
