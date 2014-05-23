@@ -1,6 +1,6 @@
 ﻿namespace Krisa.ControlUsuarios
 {
-    partial class UIModificar_Usuario
+    partial class UIModificarUsuario
     {
         /// <summary>
         /// Required designer variable.
@@ -196,7 +196,6 @@
             this.Name = "UIModificar_Usuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificar Contraseña";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmControlUsuarioModificar_FormClosed);
             this.gbxDatosUsuario.ResumeLayout(false);
             this.gbxDatosUsuario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImagen)).EndInit();

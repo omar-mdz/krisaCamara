@@ -1,6 +1,6 @@
 ﻿namespace Krisa.ControlUsuarios
 {
-    partial class CrearUsuario
+    partial class UICrearUsuario
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrearUsuario));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UICrearUsuario));
             this.PictureBox1 = new System.Windows.Forms.PictureBox();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
             this.Label2 = new System.Windows.Forms.Label();
             this.Label4 = new System.Windows.Forms.Label();
@@ -64,10 +60,6 @@
             // 
             // GroupBox1
             // 
-            this.GroupBox1.Controls.Add(this.txtTelefono);
-            this.GroupBox1.Controls.Add(this.label6);
-            this.GroupBox1.Controls.Add(this.txtEmail);
-            this.GroupBox1.Controls.Add(this.label5);
             this.GroupBox1.Controls.Add(this.Label1);
             this.GroupBox1.Controls.Add(this.Label2);
             this.GroupBox1.Controls.Add(this.Label4);
@@ -79,51 +71,10 @@
             this.GroupBox1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GroupBox1.Location = new System.Drawing.Point(118, 75);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(314, 408);
+            this.GroupBox1.Size = new System.Drawing.Size(314, 287);
             this.GroupBox1.TabIndex = 33;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "Datos del Usuario";
-            // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelefono.Location = new System.Drawing.Point(26, 244);
-            this.txtTelefono.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(232, 25);
-            this.txtTelefono.TabIndex = 4;
-            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(23, 223);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(150, 17);
-            this.label6.TabIndex = 31;
-            this.label6.Text = "*Telefono de Contacto:";
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(25, 182);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(232, 25);
-            this.txtEmail.TabIndex = 3;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(22, 161);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(138, 17);
-            this.label5.TabIndex = 29;
-            this.label5.Text = "*Direccion de E-mail:";
             // 
             // Label1
             // 
@@ -151,7 +102,7 @@
             // 
             this.Label4.AutoSize = true;
             this.Label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label4.Location = new System.Drawing.Point(22, 348);
+            this.Label4.Location = new System.Drawing.Point(21, 221);
             this.Label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(153, 17);
@@ -162,7 +113,7 @@
             // 
             this.Label3.AutoSize = true;
             this.Label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.Location = new System.Drawing.Point(23, 287);
+            this.Label3.Location = new System.Drawing.Point(22, 160);
             this.Label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(87, 17);
@@ -172,7 +123,7 @@
             // txtPassConfirmacion
             // 
             this.txtPassConfirmacion.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassConfirmacion.Location = new System.Drawing.Point(26, 369);
+            this.txtPassConfirmacion.Location = new System.Drawing.Point(25, 242);
             this.txtPassConfirmacion.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassConfirmacion.Name = "txtPassConfirmacion";
             this.txtPassConfirmacion.Size = new System.Drawing.Size(232, 25);
@@ -192,7 +143,7 @@
             // txtPass
             // 
             this.txtPass.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPass.Location = new System.Drawing.Point(26, 308);
+            this.txtPass.Location = new System.Drawing.Point(25, 181);
             this.txtPass.Margin = new System.Windows.Forms.Padding(4);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(232, 25);
@@ -236,7 +187,7 @@
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnCancelar.Location = new System.Drawing.Point(308, 500);
+            this.btnCancelar.Location = new System.Drawing.Point(309, 380);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(85, 36);
@@ -248,7 +199,7 @@
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnGuardar.Location = new System.Drawing.Point(161, 500);
+            this.btnGuardar.Location = new System.Drawing.Point(162, 380);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(85, 36);
@@ -270,11 +221,11 @@
             this.btnHistorialUsuario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnHistorialUsuario.UseVisualStyleBackColor = false;
             // 
-            // CrearUsuario
+            // UICrearUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 549);
+            this.ClientSize = new System.Drawing.Size(454, 427);
             this.Controls.Add(this.btnHistorialUsuario);
             this.Controls.Add(this.PictureBox1);
             this.Controls.Add(this.GroupBox1);
@@ -282,7 +233,7 @@
             this.Controls.Add(this.btnSuspenderUsuario);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
-            this.Name = "CrearUsuario";
+            this.Name = "UICrearUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Crear Usuario";
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
@@ -308,10 +259,6 @@
         internal System.Windows.Forms.Button btnSuspenderUsuario;
         internal System.Windows.Forms.Button btnCancelar;
         internal System.Windows.Forms.Button btnGuardar;
-        internal System.Windows.Forms.Label label5;
-        internal System.Windows.Forms.TextBox txtTelefono;
-        internal System.Windows.Forms.Label label6;
-        internal System.Windows.Forms.TextBox txtEmail;
         internal System.Windows.Forms.Button btnHistorialUsuario;
 
     }

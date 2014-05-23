@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Krisa.Datos;
 
 namespace Krisa.Datos
 {
@@ -17,22 +18,6 @@ namespace Krisa.Datos
         // public DbSet<Estudiante> Estudiantes { get; set; }
 
       public DbSet<Usuario> Usuarios { get; set; }
-        
-      public class Usuario
-      {
-        public int ID { get; set; }
-        public string Nombre_Usuario { get; set; }
-        public string Nombre_Completo { get; set; }
-        public string Pass { get; set; }
-        public string Email { get; set; }
-        public string Telefono { get; set; }
-        public bool isActivo { get; set; }
-      }
-
-       //public KrisaDB()
-       // {
-           // RecrearBaseDeDatos();
-       // }
 
         /// <summary>
         /// Elimina y crea de nuevo base de datos si el modelo ha cambiado.
