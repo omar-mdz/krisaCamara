@@ -1,0 +1,4 @@
+﻿El proyecto para la capa de presentacion de modulo de gestor de camara.
+
+Nota: Para facilitar el proceso de desarollo este proyecto es el proyecto executable.
+Despues el tipo de proyecto va a cambiarse a la biblioteca de clases.

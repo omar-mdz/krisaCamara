@@ -1,0 +1,13 @@
+﻿El proyecto para agragar los recursos utilizados en el proyecto como las cadenas, imagenes y etc.
+Los recursos estan ubicados en el archivo Recursos.resx de este proyecto. Cada recurso tiene que
+tener un nombre sin espacios (ej. campoVacio).
+
+Los recursos pueden ser acedidos por el gestor de recursos: Krisa.Recursos.ResourceManager
+
+1) Para obtener una cadena:
+Krisa.Recursos.ResourceManager.GetString(nombre de la cadena);
+
+2) Para obtener una imagen:
+Krisa.Recursos.ResourceManager.<nombre de la imagen>;
+o
+(Image)Krisa.Recursos.ResourceManager.GetObject(nombre de la imagen);

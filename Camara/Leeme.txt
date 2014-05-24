@@ -1,0 +1,1 @@
+﻿El proyecto para la capa de controlador de modulo de gestor de camara.

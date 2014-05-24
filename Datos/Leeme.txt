@@ -1,0 +1,6 @@
+﻿El proyecto para los clases de capa de modelo. El clase contiene dos contextos de base de datos.
+KrisaDB - contexto para la base de datos que va ser ubicada en el servidor.
+KrisaDBCliente - contexto para la base de datos de almacenamiento de datos en el cliente.
+
+Aparte de los contextos este proyecto tiene que contener las clases que van a ser guardadas en una
+de las dos bases de datos.
