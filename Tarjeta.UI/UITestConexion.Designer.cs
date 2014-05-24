@@ -1,6 +1,6 @@
 ﻿namespace Krisa.Tarjeta.UI
 {
-    partial class MainDialog
+    partial class UITestConexion
     {
         /// <summary>
         /// Required designer variable.

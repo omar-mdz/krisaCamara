@@ -51,25 +51,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgregarTarjeta.cs">
+    <Compile Include="UIAgregarTarjeta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AgregarTarjeta.Designer.cs">
-      <DependentUpon>AgregarTarjeta.cs</DependentUpon>
+    <Compile Include="UIAgregarTarjeta.Designer.cs">
+      <DependentUpon>UIAgregarTarjeta.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainDialog.cs">
+    <Compile Include="UITestConexion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainDialog.Designer.cs">
-      <DependentUpon>MainDialog.cs</DependentUpon>
+    <Compile Include="UITestConexion.Designer.cs">
+      <DependentUpon>UITestConexion.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AgregarTarjeta.resx">
-      <DependentUpon>AgregarTarjeta.cs</DependentUpon>
+    <EmbeddedResource Include="UIAgregarTarjeta.resx">
+      <DependentUpon>UIAgregarTarjeta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainDialog.resx">
-      <DependentUpon>MainDialog.cs</DependentUpon>
+    <EmbeddedResource Include="UITestConexion.resx">
+      <DependentUpon>UITestConexion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

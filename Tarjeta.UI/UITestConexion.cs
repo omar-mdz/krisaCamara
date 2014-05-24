@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace Krisa.Tarjeta.UI
 {
-    public partial class MainDialog : Form
+    public partial class UITestConexion : Form
     {
         /// <summary>
         /// Tarjeta abierta
         /// </summary>
         private Tarjeta tarjeta;
 
-        public MainDialog()
+        public UITestConexion()
         {
             InitializeComponent();
         }
@@ -147,7 +147,7 @@ namespace Krisa.Tarjeta.UI
 
         private void btnAgregarTarjeta_Click(object sender, EventArgs e)
         {
-            var form = new AgregarTarjeta();
+            var form = new UIAgregarTarjeta();
             form.ShowDialog();
         }
     }

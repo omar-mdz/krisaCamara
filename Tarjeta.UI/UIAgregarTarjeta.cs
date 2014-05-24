@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace Krisa.Tarjeta.UI
 {
-    public partial class AgregarTarjeta : Form
+    public partial class UIAgregarTarjeta : Form
     {
-        public AgregarTarjeta()
+        public UIAgregarTarjeta()
         {
             InitializeComponent();
         }
