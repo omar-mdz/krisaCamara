@@ -13,6 +13,11 @@ namespace Krisa.Datos
         // public DbSet<Estudiante> Estudiantes { get; set; }
 
         /// <summary>
+        /// La tabla de los usuarios
+        /// </summary>
+        public DbSet<Usuario> Usuarios { get; set; }
+
+        /// <summary>
         /// Constructor de clase KrisaDB
         /// </summary>
         public KrisaDB() : base()
