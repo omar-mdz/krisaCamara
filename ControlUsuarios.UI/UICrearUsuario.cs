@@ -97,7 +97,7 @@ namespace Krisa.ControlUsuarios.UI
                 e.Cancel = true;
                 return;
             }
-            if (Regex.IsMatch(txtNombreCompleto.Text, "[0-9]"))
+            if (!Regex.IsMatch(txtNombreCompleto.Text, "^[A-Z a-z]*$"))
             {
                 errorCrearUsuario.SetErrorResource(txtNombreCompleto, "CAMPO_LETRAS");
                 txtNombreCompleto.BackColor = Color.LightSkyBlue;
@@ -122,7 +122,7 @@ namespace Krisa.ControlUsuarios.UI
                 e.Cancel = true;
                 return;
             }
-            if (txtPass.Text.Length < 8)
+            if (txtPass.Text.Trim().Length < 8)
             {
                 errorCrearUsuario.SetErrorResource(txtPass, "ERROR_CONTRASENA_MINIMA");
                 txtPass.BackColor = Color.LightSkyBlue;
@@ -147,7 +147,7 @@ namespace Krisa.ControlUsuarios.UI
                 e.Cancel = true;
                 return;
             }
-            if (txtPass.Text != txtPassConfirmacion.Text)
+            if (txtPass.Text.Trim() != txtPassConfirmacion.Text.Trim())
             {
                 errorCrearUsuario.SetErrorResource(txtPassConfirmacion, "ERROR_COINCIDIR_CONTRASENA");
                 txtPassConfirmacion.BackColor = Color.LightSkyBlue;
