@@ -27,7 +27,7 @@ namespace Krisa.Datos
         private void ConfigurarConexion()
         {
             Database.Connection.ConnectionString = "Data Source=(LocalDB)\\v11.0;Integrated Security=True;Database=KrisaDBCliente";
-            Database.SetInitializer<KrisaDB>(new DropCreateDatabaseIfModelChanges<KrisaDB>());
+            Database.SetInitializer<KrisaDBCliente>(new DropCreateDatabaseIfModelChanges<KrisaDBCliente>());
         }
     }
 }
