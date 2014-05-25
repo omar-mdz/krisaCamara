@@ -25,7 +25,6 @@ namespace Krisa.ControlUsuarios
                     {
                         db.Usuarios.Add(usuario);
                         db.SaveChanges();
-                        db.Dispose();
                         return true;
                     }
                 }
@@ -59,7 +58,6 @@ namespace Krisa.ControlUsuarios
                         var cambio = from user in db.Usuarios where user.Nombre == usuario.Nombre select user;
                         cambio.First().Contrasena = nuevaContrasenaEncriptada;
                         db.SaveChanges();
-                        db.Dispose();
                         return true;
                     }
                 }

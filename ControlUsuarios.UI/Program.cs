@@ -16,7 +16,7 @@ namespace Krisa.ControlUsuarios.UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UIModificarUsuario());
+            Application.Run(new UICrearUsuario());
         }
     }
 }
