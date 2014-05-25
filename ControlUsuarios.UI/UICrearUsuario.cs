@@ -30,27 +30,30 @@ namespace Krisa.ControlUsuarios.UI
         /// <param name="e"></param>
         private void btnGuardar_Click_1(object sender, EventArgs e)
         {
-            try
+            if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                Usuario usuario = new Usuario();
-                usuario.Nombre = txtUsuario.Text;
-                usuario.NombreCompleto = txtNombreCompleto.Text;
-                usuario.Contrasena = txtPass.Text;
-                usuario.Activo = true;
-
-                if (gestorUsuario.AgregarUsuario(usuario))
+                try
                 {
-                    txtUsuario.Text = "";
-                    txtNombreCompleto.Text = "";
-                    txtPass.Text = "";
-                    txtPassConfirmacion.Text = "";
+                    Usuario usuario = new Usuario();
+                    usuario.Nombre = txtUsuario.Text.Trim();
+                    usuario.NombreCompleto = txtNombreCompleto.Text.Trim();
+                    usuario.Contrasena = txtPass.Text.Trim();
+                    usuario.Activo = true;
 
-                    MessageBox.Show(Krisa.Recursos.USUARIO_AGREGADO);
+                    if (gestorUsuario.AgregarUsuario(usuario))
+                    {
+                        txtUsuario.Text = "";
+                        txtNombreCompleto.Text = "";
+                        txtPass.Text = "";
+                        txtPassConfirmacion.Text = "";
+
+                        MessageBox.Show(Krisa.Recursos.USUARIO_AGREGADO);
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -71,14 +74,15 @@ namespace Krisa.ControlUsuarios.UI
         /// <param name="e"></param>
         private void txtUsuario_Validating_1(object sender, CancelEventArgs e)
         {
-            if (txtUsuario.Text.Trim() == "")
+            if (string.IsNullOrEmpty(txtUsuario.Text))
             {
                 errorCrearUsuario.SetErrorResource(txtUsuario, "CAMPO_VACIO");
                 txtUsuario.BackColor = Color.LightSkyBlue;
                 e.Cancel = true;
                 return;
             }
-            errorCrearUsuario.Clear();
+            e.Cancel = false;
+            errorCrearUsuario.SetError(txtUsuario, "");
             txtUsuario.BackColor = Color.White;
         }
 
@@ -90,7 +94,7 @@ namespace Krisa.ControlUsuarios.UI
         /// <param name="e"></param>
         private void txtNombreCompleto_Validating_1(object sender, CancelEventArgs e)
         {
-            if (txtNombreCompleto.Text.Trim() == "")
+            if (string.IsNullOrEmpty(txtNombreCompleto.Text))
             {
                 errorCrearUsuario.SetErrorResource(txtNombreCompleto, "CAMPO_VACIO");
                 txtNombreCompleto.BackColor = Color.LightSkyBlue;
@@ -104,8 +108,10 @@ namespace Krisa.ControlUsuarios.UI
                 e.Cancel = true;
                 return;
             }
-            errorCrearUsuario.Clear();
-            txtNombreCompleto.BackColor = Color.White;
+                e.Cancel = false;
+                errorCrearUsuario.SetErrorResource(txtNombreCompleto, "");
+                txtNombreCompleto.BackColor = Color.White;
+            
         }
 
         /// <summary>
@@ -115,7 +121,7 @@ namespace Krisa.ControlUsuarios.UI
         /// <param name="e"></param>
         private void txtPass_Validating_1(object sender, CancelEventArgs e)
         {
-            if (txtPass.Text.Trim() == "")
+            if (string.IsNullOrEmpty(txtPass.Text))
             {
                 errorCrearUsuario.SetErrorResource(txtPass, "CAMPO_VACIO");
                 txtPass.BackColor = Color.LightSkyBlue;
@@ -129,8 +135,9 @@ namespace Krisa.ControlUsuarios.UI
                 e.Cancel = true;
                 return;
             }
-            errorCrearUsuario.Clear();
-            txtPass.BackColor = Color.White;
+                e.Cancel = false;
+                errorCrearUsuario.SetErrorResource(txtPass, "");
+                txtPass.BackColor = Color.White;
         }
 
         /// <summary>
@@ -140,7 +147,7 @@ namespace Krisa.ControlUsuarios.UI
         /// <param name="e"></param>
         private void txtPassConfirmacion_Validating_1(object sender, CancelEventArgs e)
         {
-            if (txtPassConfirmacion.Text.Trim() == "")
+            if (string.IsNullOrEmpty(txtPassConfirmacion.Text))
             {
                 errorCrearUsuario.SetErrorResource(txtPassConfirmacion, "CAMPO_VACIO");
                 txtPassConfirmacion.BackColor = Color.LightSkyBlue;
@@ -154,8 +161,10 @@ namespace Krisa.ControlUsuarios.UI
                 e.Cancel = true;
                 return;
             }
-            errorCrearUsuario.Clear();
-            txtPassConfirmacion.BackColor = Color.White;
+                e.Cancel = false;
+                errorCrearUsuario.SetErrorResource(txtPassConfirmacion, "");
+                txtPassConfirmacion.BackColor = Color.White;
+            
         }
     }
 }

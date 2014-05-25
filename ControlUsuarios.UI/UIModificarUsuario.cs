@@ -40,23 +40,26 @@ namespace Krisa.ControlUsuarios.UI
         /// <param name="e"></param>
         private void btnModificar_Click_1(object sender, EventArgs e)
         {
-            Usuario usuario = new Usuario();
-            usuario.Nombre = txtUsuario.Text;
-            usuario.Contrasena = txtPass.Text;
-            string nuevaContrasena = txtNuevoPass.Text;
-            try
+            if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                if (gestorUsuario.ModificarUsuario(usuario, nuevaContrasena))
+                Usuario usuario = new Usuario();
+                usuario.Nombre = txtUsuario.Text;
+                usuario.Contrasena = txtPass.Text;
+                string nuevaContrasena = txtNuevoPass.Text;
+                try
                 {
-                    txtNuevoPass.Text = "";
-                    txtConfirmar.Text = "";
-                    txtPass.Text = "";
-                    MessageBox.Show(Krisa.Recursos.CONTRASENA_MODIFICADA);
+                    if (gestorUsuario.ModificarUsuario(usuario, nuevaContrasena))
+                    {
+                        txtNuevoPass.Text = "";
+                        txtConfirmar.Text = "";
+                        txtPass.Text = "";
+                        MessageBox.Show(Krisa.Recursos.CONTRASENA_MODIFICADA);
+                    }
                 }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -67,14 +70,14 @@ namespace Krisa.ControlUsuarios.UI
         /// <param name="e"></param>
         private void txtPass_Validating_1(object sender, CancelEventArgs e)
         {
-            if (txtPass.Text.Trim() == "")
+            if (string.IsNullOrEmpty(txtPass.Text))
             {
                 errorModificarUsuario.SetErrorResource(txtPass, "CAMPO_VACIO");
                 txtPass.BackColor = Color.LightSkyBlue;
                 e.Cancel = true;
                 return;
             }
-            errorModificarUsuario.Clear();
+            errorModificarUsuario.SetError(txtPass,"");
             txtPass.BackColor = Color.White;
         }
 
@@ -85,7 +88,7 @@ namespace Krisa.ControlUsuarios.UI
         /// <param name="e"></param>
         private void txtNuevoPass_Validating_1(object sender, CancelEventArgs e)
         {
-            if (txtNuevoPass.Text.Trim() == "")
+            if (string.IsNullOrEmpty(txtNuevoPass.Text))
             {
                 errorModificarUsuario.SetErrorResource(txtNuevoPass, "CAMPO_VACIO");
                 txtNuevoPass.BackColor = Color.LightSkyBlue;
@@ -106,7 +109,14 @@ namespace Krisa.ControlUsuarios.UI
                 e.Cancel = true;
                 return;
             }
-            errorModificarUsuario.Clear();
+            if (txtNuevoPass.Text.Trim() != txtConfirmar.Text.Trim())
+            {
+                errorModificarUsuario.SetErrorResource(txtNuevoPass, "ERROR_COINCIDIR_CONTRASENA");
+                txtNuevoPass.BackColor = Color.LightSkyBlue;
+                e.Cancel = true;
+                return;
+            }
+            errorModificarUsuario.SetError(txtNuevoPass,"");
             txtNuevoPass.BackColor = Color.White;
         }
 
@@ -117,21 +127,21 @@ namespace Krisa.ControlUsuarios.UI
         /// <param name="e"></param>
         private void txtConfirmar_Validating_1(object sender, CancelEventArgs e)
         {
-            if (txtConfirmar.Text.Trim() == "")
+            if (string.IsNullOrEmpty(txtConfirmar.Text))
             {
                 errorModificarUsuario.SetErrorResource(txtConfirmar, "CAMPO_VACIO");
                 txtConfirmar.BackColor = Color.LightSkyBlue;
                 e.Cancel = true;
                 return;
             }
-            if (txtNuevoPass.Text != txtConfirmar.Text)
+            if (txtNuevoPass.Text.Trim() != txtConfirmar.Text.Trim())
             {
                 errorModificarUsuario.SetErrorResource(txtConfirmar, "ERROR_COINCIDIR_CONTRASENA");
                 txtConfirmar.BackColor = Color.LightSkyBlue;
                 e.Cancel = true;
                 return;
             }
-            errorModificarUsuario.Clear();
+            errorModificarUsuario.SetError(txtConfirmar, "");
             txtConfirmar.BackColor = Color.White;
         }
     }

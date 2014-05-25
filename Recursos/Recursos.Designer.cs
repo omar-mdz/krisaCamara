@@ -61,7 +61,7 @@ namespace Krisa {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a &quot;Se admiten solo letras&quot;.
+        ///   Busca una cadena traducida similar a Se admiten solo letras.
         /// </summary>
         public static string CAMPO_LETRAS {
             get {
@@ -70,7 +70,7 @@ namespace Krisa {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a &quot;Campo requerido&quot;.
+        ///   Busca una cadena traducida similar a Campo requerido.
         /// </summary>
         public static string CAMPO_VACIO {
             get {
@@ -79,7 +79,7 @@ namespace Krisa {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a &quot;Contraseña modificada con exito&quot;.
+        ///   Busca una cadena traducida similar a Contraseña modificada con exito.
         /// </summary>
         public static string CONTRASENA_MODIFICADA {
             get {
@@ -88,7 +88,7 @@ namespace Krisa {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a &quot;El usuario ya esta registrado&quot;.
+        ///   Busca una cadena traducida similar a El usuario ya esta registrado.
         /// </summary>
         public static string ERROR_AGREGAR_USUARIO {
             get {
@@ -97,7 +97,7 @@ namespace Krisa {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a &quot;La contraseña no coinciden&quot;.
+        ///   Busca una cadena traducida similar a La contraseña no coinciden.
         /// </summary>
         public static string ERROR_COINCIDIR_CONTRASENA {
             get {
@@ -106,7 +106,7 @@ namespace Krisa {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a &quot;Ocurrio un error en la conexión a la base de datos&quot;.
+        ///   Busca una cadena traducida similar a Ocurrio un error en la conexión a la base de datos.
         /// </summary>
         public static string ERROR_CONEXION {
             get {
@@ -115,7 +115,7 @@ namespace Krisa {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a &quot;La contraseña es incorrecta&quot;.
+        ///   Busca una cadena traducida similar a La contraseña es incorrecta.
         /// </summary>
         public static string ERROR_CONTRASENA {
             get {
@@ -124,7 +124,7 @@ namespace Krisa {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a &quot;La longitud minima es de 8 caracteres&quot;.
+        ///   Busca una cadena traducida similar a La longitud minima es de 8 caracteres.
         /// </summary>
         public static string ERROR_CONTRASENA_MINIMA {
             get {
@@ -133,7 +133,7 @@ namespace Krisa {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a &quot;La nueva contraseña es igual a la anterior&quot;.
+        ///   Busca una cadena traducida similar a La nueva contraseña es igual a la anterior.
         /// </summary>
         public static string ERROR_CONTRASENAS_IGUALES {
             get {
@@ -142,7 +142,7 @@ namespace Krisa {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a &quot;Usuario agregado con exito&quot;.
+        ///   Busca una cadena traducida similar a Usuario agregado con exito.
         /// </summary>
         public static string USUARIO_AGREGADO {
             get {

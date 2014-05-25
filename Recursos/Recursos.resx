@@ -118,33 +118,33 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CAMPO_LETRAS" xml:space="preserve">
-    <value>"Se admiten solo letras"</value>
+    <value>Se admiten solo letras</value>
   </data>
   <data name="CAMPO_VACIO" xml:space="preserve">
-    <value>"Campo requerido"</value>
+    <value>Campo requerido</value>
   </data>
   <data name="CONTRASENA_MODIFICADA" xml:space="preserve">
-    <value>"Contraseña modificada con exito"</value>
+    <value>Contraseña modificada con exito</value>
   </data>
   <data name="ERROR_AGREGAR_USUARIO" xml:space="preserve">
-    <value>"El usuario ya esta registrado"</value>
+    <value>El usuario ya esta registrado</value>
   </data>
   <data name="ERROR_COINCIDIR_CONTRASENA" xml:space="preserve">
-    <value>"La contraseña no coinciden"</value>
+    <value>La contraseña no coinciden</value>
   </data>
   <data name="ERROR_CONEXION" xml:space="preserve">
-    <value>"Ocurrio un error en la conexión a la base de datos"</value>
+    <value>Ocurrio un error en la conexión a la base de datos</value>
   </data>
   <data name="ERROR_CONTRASENA" xml:space="preserve">
-    <value>"La contraseña es incorrecta"</value>
+    <value>La contraseña es incorrecta</value>
   </data>
   <data name="ERROR_CONTRASENAS_IGUALES" xml:space="preserve">
-    <value>"La nueva contraseña es igual a la anterior"</value>
+    <value>La nueva contraseña es igual a la anterior</value>
   </data>
   <data name="ERROR_CONTRASENA_MINIMA" xml:space="preserve">
-    <value>"La longitud minima es de 8 caracteres"</value>
+    <value>La longitud minima es de 8 caracteres</value>
   </data>
   <data name="USUARIO_AGREGADO" xml:space="preserve">
-    <value>"Usuario agregado con exito"</value>
+    <value>Usuario agregado con exito</value>
   </data>
 </root>
