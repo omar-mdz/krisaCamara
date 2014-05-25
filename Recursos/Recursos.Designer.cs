@@ -70,6 +70,15 @@ namespace Krisa {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Se admiten solo letras y numeros.
+        /// </summary>
+        public static string CAMPO_LETRASYNUMEROS {
+            get {
+                return ResourceManager.GetString("CAMPO_LETRASYNUMEROS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Campo requerido.
         /// </summary>
         public static string CAMPO_VACIO {

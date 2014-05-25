@@ -111,16 +111,19 @@
             this.txtConfirmar.Size = new System.Drawing.Size(232, 25);
             this.txtConfirmar.TabIndex = 4;
             this.txtConfirmar.UseSystemPasswordChar = true;
+            this.txtConfirmar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtConfirmar_KeyPress);
             this.txtConfirmar.Validating += new System.ComponentModel.CancelEventHandler(this.txtConfirmar_Validating_1);
             // 
             // txtUsuario
             // 
+            this.txtUsuario.Enabled = false;
             this.txtUsuario.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.Location = new System.Drawing.Point(10, 62);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(232, 25);
             this.txtUsuario.TabIndex = 1;
+            this.txtUsuario.Text = "Sotres10";
             // 
             // Label4
             // 
@@ -153,6 +156,7 @@
             this.txtNuevoPass.Size = new System.Drawing.Size(232, 25);
             this.txtNuevoPass.TabIndex = 3;
             this.txtNuevoPass.UseSystemPasswordChar = true;
+            this.txtNuevoPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNuevoPass_KeyPress);
             this.txtNuevoPass.Validating += new System.ComponentModel.CancelEventHandler(this.txtNuevoPass_Validating_1);
             // 
             // txtPass
@@ -164,6 +168,7 @@
             this.txtPass.Size = new System.Drawing.Size(232, 25);
             this.txtPass.TabIndex = 2;
             this.txtPass.UseSystemPasswordChar = true;
+            this.txtPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPass_KeyPress);
             this.txtPass.Validating += new System.ComponentModel.CancelEventHandler(this.txtPass_Validating_1);
             // 
             // Label1

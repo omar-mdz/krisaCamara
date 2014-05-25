@@ -20,7 +20,6 @@ namespace Krisa.ControlUsuarios.UI
         {
             InitializeComponent();
             gestorUsuario = new GestorUsuario();
-            txtPass.Select();
         }
 
         /// <summary>
@@ -77,6 +76,7 @@ namespace Krisa.ControlUsuarios.UI
                 e.Cancel = true;
                 return;
             }
+            e.Cancel = false;
             errorModificarUsuario.SetError(txtPass,"");
             txtPass.BackColor = Color.White;
         }
@@ -109,13 +109,7 @@ namespace Krisa.ControlUsuarios.UI
                 e.Cancel = true;
                 return;
             }
-            if (txtNuevoPass.Text.Trim() != txtConfirmar.Text.Trim())
-            {
-                errorModificarUsuario.SetErrorResource(txtNuevoPass, "ERROR_COINCIDIR_CONTRASENA");
-                txtNuevoPass.BackColor = Color.LightSkyBlue;
-                e.Cancel = true;
-                return;
-            }
+            e.Cancel = false;
             errorModificarUsuario.SetError(txtNuevoPass,"");
             txtNuevoPass.BackColor = Color.White;
         }
@@ -141,8 +135,48 @@ namespace Krisa.ControlUsuarios.UI
                 e.Cancel = true;
                 return;
             }
+            e.Cancel = false;
             errorModificarUsuario.SetError(txtConfirmar, "");
             txtConfirmar.BackColor = Color.White;
+        }
+
+        /// <summary>
+        /// No permitir escribir espacios en la contraseña anterior
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtPass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// No permitir escribir espacios en la nueva contraseña
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtNuevoPass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// No permitir escribir espacios en la confirmacion de contraseña
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtConfirmar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

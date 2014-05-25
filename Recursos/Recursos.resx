@@ -120,6 +120,9 @@
   <data name="CAMPO_LETRAS" xml:space="preserve">
     <value>Se admiten solo letras</value>
   </data>
+  <data name="CAMPO_LETRASYNUMEROS" xml:space="preserve">
+    <value>Se admiten solo letras y numeros</value>
+  </data>
   <data name="CAMPO_VACIO" xml:space="preserve">
     <value>Campo requerido</value>
   </data>

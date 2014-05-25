@@ -144,6 +144,7 @@
             this.txtPassConfirmacion.Size = new System.Drawing.Size(254, 25);
             this.txtPassConfirmacion.TabIndex = 6;
             this.txtPassConfirmacion.UseSystemPasswordChar = true;
+            this.txtPassConfirmacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassConfirmacion_KeyPress);
             this.txtPassConfirmacion.Validating += new System.ComponentModel.CancelEventHandler(this.txtPassConfirmacion_Validating_1);
             // 
             // txtUsuario
@@ -154,6 +155,7 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(254, 25);
             this.txtUsuario.TabIndex = 1;
+            this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
             this.txtUsuario.Validating += new System.ComponentModel.CancelEventHandler(this.txtUsuario_Validating_1);
             // 
             // txtPass
@@ -165,6 +167,7 @@
             this.txtPass.Size = new System.Drawing.Size(254, 25);
             this.txtPass.TabIndex = 5;
             this.txtPass.UseSystemPasswordChar = true;
+            this.txtPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPass_KeyPress);
             this.txtPass.Validating += new System.ComponentModel.CancelEventHandler(this.txtPass_Validating_1);
             // 
             // txtNombreCompleto

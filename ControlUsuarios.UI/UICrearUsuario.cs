@@ -20,7 +20,6 @@ namespace Krisa.ControlUsuarios.UI
         {
             InitializeComponent();
             gestorUsuario = new GestorUsuario();
-            txtUsuario.Select();
         }
 
         /// <summary>
@@ -74,9 +73,16 @@ namespace Krisa.ControlUsuarios.UI
         /// <param name="e"></param>
         private void txtUsuario_Validating_1(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtUsuario.Text))
+            if (txtUsuario.Text.Trim() == "")
             {
                 errorCrearUsuario.SetErrorResource(txtUsuario, "CAMPO_VACIO");
+                txtUsuario.BackColor = Color.LightSkyBlue;
+                e.Cancel = true;
+                return;
+            }
+            if (!Regex.IsMatch(txtUsuario.Text, "^[a-zA-Z0-9]*$"))
+            {
+                errorCrearUsuario.SetErrorResource(txtUsuario, "CAMPO_LETRASYNUMEROS");
                 txtUsuario.BackColor = Color.LightSkyBlue;
                 e.Cancel = true;
                 return;
@@ -94,7 +100,7 @@ namespace Krisa.ControlUsuarios.UI
         /// <param name="e"></param>
         private void txtNombreCompleto_Validating_1(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtNombreCompleto.Text))
+            if (txtNombreCompleto.Text.Trim() == "")
             {
                 errorCrearUsuario.SetErrorResource(txtNombreCompleto, "CAMPO_VACIO");
                 txtNombreCompleto.BackColor = Color.LightSkyBlue;
@@ -108,10 +114,9 @@ namespace Krisa.ControlUsuarios.UI
                 e.Cancel = true;
                 return;
             }
-                e.Cancel = false;
-                errorCrearUsuario.SetErrorResource(txtNombreCompleto, "");
-                txtNombreCompleto.BackColor = Color.White;
-            
+            e.Cancel = false;
+            errorCrearUsuario.SetErrorResource(txtNombreCompleto, "");
+            txtNombreCompleto.BackColor = Color.White;    
         }
 
         /// <summary>
@@ -121,7 +126,7 @@ namespace Krisa.ControlUsuarios.UI
         /// <param name="e"></param>
         private void txtPass_Validating_1(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtPass.Text))
+            if (txtPass.Text.Trim() =="")
             {
                 errorCrearUsuario.SetErrorResource(txtPass, "CAMPO_VACIO");
                 txtPass.BackColor = Color.LightSkyBlue;
@@ -135,9 +140,9 @@ namespace Krisa.ControlUsuarios.UI
                 e.Cancel = true;
                 return;
             }
-                e.Cancel = false;
-                errorCrearUsuario.SetErrorResource(txtPass, "");
-                txtPass.BackColor = Color.White;
+            e.Cancel = false;
+            errorCrearUsuario.SetErrorResource(txtPass, "");
+            txtPass.BackColor = Color.White;
         }
 
         /// <summary>
@@ -147,7 +152,7 @@ namespace Krisa.ControlUsuarios.UI
         /// <param name="e"></param>
         private void txtPassConfirmacion_Validating_1(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrEmpty(txtPassConfirmacion.Text))
+            if (txtPassConfirmacion.Text.Trim() =="")
             {
                 errorCrearUsuario.SetErrorResource(txtPassConfirmacion, "CAMPO_VACIO");
                 txtPassConfirmacion.BackColor = Color.LightSkyBlue;
@@ -161,10 +166,49 @@ namespace Krisa.ControlUsuarios.UI
                 e.Cancel = true;
                 return;
             }
-                e.Cancel = false;
-                errorCrearUsuario.SetErrorResource(txtPassConfirmacion, "");
-                txtPassConfirmacion.BackColor = Color.White;
-            
+            e.Cancel = false;
+            errorCrearUsuario.SetErrorResource(txtPassConfirmacion, "");
+            txtPassConfirmacion.BackColor = Color.White;  
+        }
+
+        /// <summary>
+        /// No permitir escribir espacios en la contraseña
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtPass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// No permitir escribir espacios en la confirmacion de contraseña
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtPassConfirmacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// No permitir escribir espacios en el nombre de usuario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = true;
+
+            }
         }
     }
 }
