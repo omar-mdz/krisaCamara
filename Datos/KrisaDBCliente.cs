@@ -12,6 +12,8 @@ namespace Krisa.Datos
         // Ejemplo:
         // public DbSet<Estudiante> Estudiantes { get; set; }
 
+        public DbSet<VideoCamara> camaras { set; get; }
+
         /// <summary>
         /// Constructor de clase KrisaDB
         /// </summary>
