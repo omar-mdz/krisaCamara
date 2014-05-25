@@ -17,9 +17,9 @@ namespace Krisa.ControlUsuarios
         }
 
         /// <summary>
-        /// Metodo para agregar un usuario a la Base de Datos
+        /// Agregar un usuario a la Base de Datos
         /// </summary>
-        /// <param name="usuario"></param>
+        /// <param name="usuario"></param
         public bool AgregarUsuario(Usuario usuario)
         {
             if (VerificarUsuario(usuario))
