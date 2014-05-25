@@ -45,7 +45,7 @@ namespace Krisa.ControlUsuarios.UI
                     txtPass.Text = "";
                     txtPassConfirmacion.Text = "";
 
-                    MessageBox.Show("El usuario se ha agregado con exito");
+                    MessageBox.Show(Krisa.Recursos.USUARIO_AGREGADO);
                 }
             }
             catch (Exception ex)
@@ -73,9 +73,9 @@ namespace Krisa.ControlUsuarios.UI
         {
             if (txtUsuario.Text.Trim() == "")
             {
-                errorCrearUsuario.SetError(txtUsuario, "Valor no puede ser nulo");
+                errorCrearUsuario.SetErrorResource(txtUsuario, "CAMPO_VACIO");
                 txtUsuario.BackColor = Color.LightSkyBlue;
-                e.Cancel = false;
+                e.Cancel = true;
                 return;
             }
             errorCrearUsuario.Clear();
@@ -92,16 +92,16 @@ namespace Krisa.ControlUsuarios.UI
         {
             if (txtNombreCompleto.Text.Trim() == "")
             {
-                errorCrearUsuario.SetError(txtNombreCompleto, "Valor no puede ser nulo");
+                errorCrearUsuario.SetErrorResource(txtNombreCompleto, "CAMPO_VACIO");
                 txtNombreCompleto.BackColor = Color.LightSkyBlue;
-                e.Cancel = false;
+                e.Cancel = true;
                 return;
             }
             if (Regex.IsMatch(txtNombreCompleto.Text, "[0-9]"))
             {
-                errorCrearUsuario.SetError(txtNombreCompleto, "No se pueden ingresar Numeros");
+                errorCrearUsuario.SetErrorResource(txtNombreCompleto, "CAMPO_LETRAS");
                 txtNombreCompleto.BackColor = Color.LightSkyBlue;
-                e.Cancel = false;
+                e.Cancel = true;
                 return;
             }
             errorCrearUsuario.Clear();
@@ -117,16 +117,16 @@ namespace Krisa.ControlUsuarios.UI
         {
             if (txtPass.Text.Trim() == "")
             {
-                errorCrearUsuario.SetError(txtPass, "Valor no puede ser nulo");
+                errorCrearUsuario.SetErrorResource(txtPass, "CAMPO_VACIO");
                 txtPass.BackColor = Color.LightSkyBlue;
-                e.Cancel = false;
+                e.Cancel = true;
                 return;
             }
             if (txtPass.Text.Length < 8)
             {
-                errorCrearUsuario.SetError(txtPass, "La longitud minima es de 8 caracteres");
+                errorCrearUsuario.SetErrorResource(txtPass, "ERROR_CONTRASENA_MINIMA");
                 txtPass.BackColor = Color.LightSkyBlue;
-                e.Cancel = false;
+                e.Cancel = true;
                 return;
             }
             errorCrearUsuario.Clear();
@@ -142,16 +142,16 @@ namespace Krisa.ControlUsuarios.UI
         {
             if (txtPassConfirmacion.Text.Trim() == "")
             {
-                errorCrearUsuario.SetError(txtPassConfirmacion, "Valor no puede ser nulo");
+                errorCrearUsuario.SetErrorResource(txtPassConfirmacion, "CAMPO_VACIO");
                 txtPassConfirmacion.BackColor = Color.LightSkyBlue;
-                e.Cancel = false;
+                e.Cancel = true;
                 return;
             }
             if (txtPass.Text != txtPassConfirmacion.Text)
             {
-                errorCrearUsuario.SetError(txtPassConfirmacion, "La contraseña no coincide");
+                errorCrearUsuario.SetErrorResource(txtPassConfirmacion, "ERROR_COINCIDIR_CONTRASENA");
                 txtPassConfirmacion.BackColor = Color.LightSkyBlue;
-                e.Cancel = false;
+                e.Cancel = true;
                 return;
             }
             errorCrearUsuario.Clear();

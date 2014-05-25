@@ -51,7 +51,7 @@ namespace Krisa.ControlUsuarios.UI
                     txtNuevoPass.Text = "";
                     txtConfirmar.Text = "";
                     txtPass.Text = "";
-                    MessageBox.Show("Contraseña modificada con exito");
+                    MessageBox.Show(Krisa.Recursos.CONTRASENA_MODIFICADA);
                 }
             }
             catch(Exception ex)
@@ -69,9 +69,9 @@ namespace Krisa.ControlUsuarios.UI
         {
             if (txtPass.Text.Trim() == "")
             {
-                errorModificarUsuario.SetError(txtPass, "Valor no puede ser nulo");
+                errorModificarUsuario.SetErrorResource(txtPass, "CAMPO_VACIO");
                 txtPass.BackColor = Color.LightSkyBlue;
-                e.Cancel = false;
+                e.Cancel = true;
                 return;
             }
             errorModificarUsuario.Clear();
@@ -87,23 +87,23 @@ namespace Krisa.ControlUsuarios.UI
         {
             if (txtNuevoPass.Text.Trim() == "")
             {
-                errorModificarUsuario.SetError(txtNuevoPass, "Valor no puede ser nulo");
+                errorModificarUsuario.SetErrorResource(txtNuevoPass, "CAMPO_VACIO");
                 txtNuevoPass.BackColor = Color.LightSkyBlue;
-                e.Cancel = false;
+                e.Cancel = true;
                 return;
             }
             if (txtNuevoPass.Text.Length < 8)
             {
-                errorModificarUsuario.SetError(txtNuevoPass, "La longitud minima es de 8 caracteres");
+                errorModificarUsuario.SetErrorResource(txtNuevoPass, "ERROR_CONTRASENA_MINIMA");
                 txtNuevoPass.BackColor = Color.LightSkyBlue;
-                e.Cancel = false;
+                e.Cancel = true;
                 return;
             }
             if (txtPass.Text.Trim() == txtNuevoPass.Text.Trim())
             {
-                errorModificarUsuario.SetError(txtNuevoPass, "La nueva contraseña es igual a la anterior");
+                errorModificarUsuario.SetErrorResource(txtNuevoPass, "ERROR_CONTRASENAS_IGUALES");
                 txtNuevoPass.BackColor = Color.LightSkyBlue;
-                e.Cancel = false;
+                e.Cancel = true;
                 return;
             }
             errorModificarUsuario.Clear();
@@ -119,16 +119,16 @@ namespace Krisa.ControlUsuarios.UI
         {
             if (txtConfirmar.Text.Trim() == "")
             {
-                errorModificarUsuario.SetError(txtConfirmar, "Valor no puede ser nulo");
+                errorModificarUsuario.SetErrorResource(txtConfirmar, "CAMPO_VACIO");
                 txtConfirmar.BackColor = Color.LightSkyBlue;
-                e.Cancel = false;
+                e.Cancel = true;
                 return;
             }
             if (txtNuevoPass.Text != txtConfirmar.Text)
             {
-                errorModificarUsuario.SetError(txtConfirmar, "La contraseña no coincide");
+                errorModificarUsuario.SetErrorResource(txtConfirmar, "ERROR_COINCIDIR_CONTRASENA");
                 txtConfirmar.BackColor = Color.LightSkyBlue;
-                e.Cancel = false;
+                e.Cancel = true;
                 return;
             }
             errorModificarUsuario.Clear();

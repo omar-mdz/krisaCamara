@@ -9,13 +9,6 @@ namespace Krisa.ControlUsuarios
 {
     public class GestorUsuario
     {
-        public KrisaDB db;
-
-        public GestorUsuario()
-        {
-            db = new KrisaDB();
-        }
-
         /// <summary>
         /// Agregar un usuario a la Base de Datos
         /// </summary>
@@ -28,19 +21,22 @@ namespace Krisa.ControlUsuarios
                 usuario.Contrasena = contrasenaEncriptada;
                 try
                 {
-                    db.Usuarios.Add(usuario);
-                    db.SaveChanges();
-                    db.Dispose();
-                    return true;
+                    using (var db = new KrisaDB())
+                    {
+                        db.Usuarios.Add(usuario);
+                        db.SaveChanges();
+                        db.Dispose();
+                        return true;
+                    }
                 }
                 catch (Exception)
                 {
-                    throw new Exception("Error de conexion en la Base de Datos");
+                    throw new Exception(Krisa.Recursos.ERROR_CONEXION);
                 }
             }
             else
             {
-                throw new Exception("El usuario ya esta registrado");
+                throw new Exception(Krisa.Recursos.ERROR_AGREGAR_USUARIO);
             }
         }
 
@@ -53,25 +49,28 @@ namespace Krisa.ControlUsuarios
         {   
             string ContrasenaEncriptada = Encriptar(usuario.Contrasena);
             usuario.Contrasena = ContrasenaEncriptada;
-            if (ValidarContrasena(usuario.Contrasena))
+            if (ValidarContrasena(usuario))
             {
                 try
                 {
-                    string nuevaContrasenaEncriptada = Encriptar(nuevaContrasena);
-                    var cambio = from user in db.Usuarios where user.Nombre == usuario.Nombre select user;
-                    cambio.First().Contrasena = nuevaContrasenaEncriptada;
-                    db.SaveChanges();
-                    db.Dispose();
-                    return true;
+                    using (var db = new KrisaDB())
+                    {
+                        string nuevaContrasenaEncriptada = Encriptar(nuevaContrasena);
+                        var cambio = from user in db.Usuarios where user.Nombre == usuario.Nombre select user;
+                        cambio.First().Contrasena = nuevaContrasenaEncriptada;
+                        db.SaveChanges();
+                        db.Dispose();
+                        return true;
+                    }
                 }
                 catch (Exception)
                 {
-                    throw new Exception("Error de conexion en la Base de Datos");   
+                    throw new Exception(Krisa.Recursos.ERROR_CONEXION);   
                 }
             }
             else
             {
-                throw new Exception("La contraseña es incorrecta");
+                throw new Exception(Krisa.Recursos.ERROR_CONTRASENA);
             }
         }
 
@@ -101,16 +100,19 @@ namespace Krisa.ControlUsuarios
         /// </summary>
         /// <param name="contrasena">Es la contraseña que se va a validar en la base de datos</param>
         /// <returns></returns>
-        public bool ValidarContrasena(string contrasena)
+        public bool ValidarContrasena(Usuario usuario)
         {
             try
             {
-                var resultado = from user in db.Usuarios where user.Contrasena == contrasena select user;
-                return resultado.Count<Usuario>() == 0 ? false : true;
+                using (var db = new KrisaDB())
+                {
+                    var resultado = from user in db.Usuarios where user.Nombre == usuario.Nombre && user.Contrasena == usuario.Contrasena select user;
+                    return resultado.Count<Usuario>() == 0 ? false : true;
+                }
             }
             catch (Exception)
             {
-                throw new Exception("Error de conexion en la Base de Datos");
+                throw new Exception(Krisa.Recursos.ERROR_CONEXION);
             }
         }
 
@@ -123,12 +125,15 @@ namespace Krisa.ControlUsuarios
         {
             try
             {
-                var resultado = from user in db.Usuarios where user.Nombre == usuario.Nombre select user;
-                return resultado.Count<Usuario>() == 0 ? true : false;
+                using (var db = new KrisaDB())
+                {
+                    var resultado = from user in db.Usuarios where user.Nombre == usuario.Nombre select user;
+                    return resultado.Count<Usuario>() == 0 ? true : false;
+                }
             }
             catch (Exception)
             {
-                throw new Exception("Error de conexion en la Base de Datos");
+                throw new Exception(Krisa.Recursos.ERROR_CONEXION);
             }
         }
     }
