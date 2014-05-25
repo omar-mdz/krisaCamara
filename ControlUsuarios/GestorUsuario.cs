@@ -19,7 +19,7 @@ namespace Krisa.ControlUsuarios
         /// <summary>
         /// Agregar un usuario a la Base de Datos
         /// </summary>
-        /// <param name="usuario"></param
+        /// <param name="usuario">Es el usuario que se va a agregar a la base de datos</param 
         public bool AgregarUsuario(Usuario usuario)
         {
             if (VerificarUsuario(usuario))
@@ -47,8 +47,8 @@ namespace Krisa.ControlUsuarios
         /// <summary>
         /// Metodo para modificar la contraseña de un usuario
         /// </summary>
-        /// <param name="usuario"></param>
-        /// <param name="nuevoPass"></param>
+        /// <param name="usuario">Es el usuario que se va a modificar en la Base de datos</param>
+        /// <param name="nuevoPass">Es la nueva contraseña del usuario</param>
         public bool ModificarUsuario(Usuario usuario, string nuevaContrasena)
         {   
             string ContrasenaEncriptada = Encriptar(usuario.Contrasena);
@@ -78,7 +78,7 @@ namespace Krisa.ControlUsuarios
         /// <summary>
         /// Metodo para encriptar la contraseña del usuario
         /// </summary>
-        /// <param name="password"></param>
+        /// <param name="password">Es la contraseña que se va a encriptar con el SHA256</param>
         /// <returns></returns>
         public string Encriptar(string contrasena)
         {
@@ -99,7 +99,7 @@ namespace Krisa.ControlUsuarios
         /// <summary>
         /// Metodo para validar la contraseña anterior de un usuario
         /// </summary>
-        /// <param name="password"></param>
+        /// <param name="contrasena">Es la contraseña que se va a validar en la base de datos</param>
         /// <returns></returns>
         public bool ValidarContrasena(string contrasena)
         {
@@ -117,7 +117,7 @@ namespace Krisa.ControlUsuarios
         /// <summary>
         /// Metodo para verificar si un usuario ya esta registrado en la BD
         /// </summary>
-        /// <param name="usuario"></param>
+        /// <param name="usuario">Es el usuario que se va verficar si existe en la base de datos</param>
         /// <returns></returns>
         public bool VerificarUsuario(Usuario usuario)
         {
