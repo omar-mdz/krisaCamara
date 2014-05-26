@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
+
 using Krisa.Datos;
 
 namespace Krisa.ControlUsuarios
@@ -12,16 +13,24 @@ namespace Krisa.ControlUsuarios
         /// <summary>
         /// Agregar un usuario a la Base de Datos
         /// </summary>
-        /// <param name="usuario">Usuario que se va a agregar a la base de datos</param 
+        /// <param name="nombre">Nombre de usuario para agregar a la base de datos</param>
+        /// <param name="nombreCompleto">Nombre completo de usuario</param>
+        /// <param name="contrasena">Contrasena de usuario</param>
         /// <returns>true = si el usuario fue agregado con exito, false = ocurrio un error</returns>
         /// <exception cref="Exception">Error de Entity Framework</excepcion>
         /// <exception cref="ApplicationException">El usuario con nombre especificado ya esta registrado</excepcion>
-        public bool AgregarUsuario(Usuario usuario)
+        public bool AgregarUsuario(string nombre, string nombreCompleto, string contrasena)
         {
-            if (VerificarUsuario(usuario))
+            if (VerificarUsuario(nombre))
             {
-                string contrasenaEncriptada = Encriptar(usuario.Contrasena);
-                usuario.Contrasena = contrasenaEncriptada;
+                string contrasenaEncriptada = Encriptar(contrasena);
+                var usuario = new Usuario()
+                {
+                    Nombre = nombre,
+                    NombreCompleto = nombreCompleto,
+                    Contrasena = contrasenaEncriptada,
+                    Activo = true
+                };
                 try
                 {
                     using (var db = new KrisaDB())
@@ -45,25 +54,26 @@ namespace Krisa.ControlUsuarios
         /// <summary>
         /// Modificar la contraseña de un usuario
         /// </summary>
-        /// <param name="usuario">Usuario que se va a modificar en la Base de datos</param>
-        /// <param name="nuevoPass">Nueva contraseña del usuario</param>
+        /// <param name="nombre">Nombre del usuario para cambiar la contraseña</param>
+        /// <param name="contrasena">Contraseña actual del usuario</param>
+        /// <param name="nuevaContrasena">Nueva contraseña del usuario</param>
         /// <returns>true = se modifico el usuario, false = ocurrio un error</returns>
         /// <exception cref="Exception">Error de Entity Framework</excepcion>
         /// <exception cref="ApplicationException">La constraseña especificada de usuario no es correcta</excepcion>
-       
-        public bool ModificarUsuario(Usuario usuario, string nuevaContrasena)
-        {   
-            string ContrasenaEncriptada = Encriptar(usuario.Contrasena);
-            usuario.Contrasena = ContrasenaEncriptada;
-            if (ValidarContrasena(usuario))
+        public bool ModificarUsuario(string nombre, string contrasena, string nuevaContrasena)
+        {
+            string contrasenaEncriptada = Encriptar(contrasena);
+            if (ValidarContrasena(nombre, contrasenaEncriptada))
             {
                 try
                 {
                     using (var db = new KrisaDB())
                     {
                         string nuevaContrasenaEncriptada = Encriptar(nuevaContrasena);
-                        var cambio = from user in db.Usuarios where user.Nombre == usuario.Nombre select user;
-                        cambio.First().Contrasena = nuevaContrasenaEncriptada;
+                        var cambio = from user in db.Usuarios
+                                     where user.Nombre == nombre
+                                     select user;
+                        cambio.Single().Contrasena = nuevaContrasenaEncriptada;
                         db.SaveChanges();
                         return true;
                     }
@@ -103,17 +113,20 @@ namespace Krisa.ControlUsuarios
         /// <summary>
         /// Validar la contraseña anterior de un usuario
         /// </summary>
-        /// <param name="usuario">Usuario para validar su contraseña en la base de datos</param>
+        /// <param name="nombre">Nombre del usuario para validar su contraseña</param>
+        /// <param name="hash">Contraseñ encriptada del usuario para validar</param>
         /// <returns>true = contraseña correcta, false = ocurrio un error</returns>
         /// <exception cref="Exception">Error de Entity Framework</excepcion>
-        public bool ValidarContrasena(Usuario usuario)
+        public bool ValidarContrasena(string nombre, string hash)
         {
             try
             {
                 using (var db = new KrisaDB())
                 {
-                    var resultado = from user in db.Usuarios where user.Nombre == usuario.Nombre && user.Contrasena == usuario.Contrasena select user;
-                    return resultado.Count<Usuario>() == 0 ? false : true;
+                    var resultado = from user in db.Usuarios
+                                    where user.Nombre == nombre && user.Contrasena == hash
+                                    select user;
+                    return resultado.Any() ? false : true;
                 }
             }
             catch (Exception)
@@ -125,17 +138,19 @@ namespace Krisa.ControlUsuarios
         /// <summary>
         /// Verificar si un usuario ya esta registrado en la Base de datos
         /// </summary>
-        /// <param name="usuario">Usuario que se va verificar si existe en la base de datos</param>
+        /// <param name="nombre">Nombre de usuario para verificar si existe en la base de datos</param>
         /// <returns>true = el usuario no esta registrado en la base de datos, false = ocurrio un error</returns>
         /// <exception cref="Exception">Error de Entity Framework</excepcion>
-        public bool VerificarUsuario(Usuario usuario)
+        public bool VerificarUsuario(string nombre)
         {
             try
             {
                 using (var db = new KrisaDB())
                 {
-                    var resultado = from user in db.Usuarios where user.Nombre == usuario.Nombre select user;
-                    return resultado.Count<Usuario>() == 0 ? true : false;
+                    var resultado = from user in db.Usuarios
+                                    where user.Nombre == nombre
+                                    select user;
+                    return resultado.Any();
                 }
             }
             catch (Exception)

@@ -33,13 +33,11 @@ namespace Krisa.ControlUsuarios.UI
             {
                 try
                 {
-                    Usuario usuario = new Usuario();
-                    usuario.Nombre = txtUsuario.Text.Trim();
-                    usuario.NombreCompleto = txtNombreCompleto.Text.Trim();
-                    usuario.Contrasena = txtPass.Text.Trim();
-                    usuario.Activo = true;
+                    var nombre = txtUsuario.Text.Trim();
+                    var nombreCompleto = txtNombreCompleto.Text.Trim();
+                    var contrasena = txtPass.Text.Trim();
 
-                    if (gestorUsuario.AgregarUsuario(usuario))
+                    if (gestorUsuario.AgregarUsuario(nombre, nombreCompleto, contrasena))
                     {
                         txtUsuario.Text = "";
                         txtNombreCompleto.Text = "";

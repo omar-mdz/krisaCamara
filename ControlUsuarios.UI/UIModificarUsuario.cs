@@ -27,7 +27,7 @@ namespace Krisa.ControlUsuarios.UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnCancelar_Click_1(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -37,17 +37,16 @@ namespace Krisa.ControlUsuarios.UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnModificar_Click_1(object sender, EventArgs e)
+        private void btnModificar_Click(object sender, EventArgs e)
         {
             if (ValidateChildren(ValidationConstraints.Enabled))
             {
-                Usuario usuario = new Usuario();
-                usuario.Nombre = txtUsuario.Text;
-                usuario.Contrasena = txtPass.Text;
-                string nuevaContrasena = txtNuevoPass.Text;
+                var nombre = txtUsuario.Text;
+                var contrasena = txtPass.Text;
+                var nuevaContrasena = txtNuevoPass.Text;
                 try
                 {
-                    if (gestorUsuario.ModificarUsuario(usuario, nuevaContrasena))
+                    if (gestorUsuario.ModificarUsuario(nombre, contrasena, nuevaContrasena))
                     {
                         txtNuevoPass.Text = "";
                         txtConfirmar.Text = "";
@@ -67,7 +66,7 @@ namespace Krisa.ControlUsuarios.UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void txtPass_Validating_1(object sender, CancelEventArgs e)
+        private void txtPass_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtPass.Text))
             {
@@ -86,7 +85,7 @@ namespace Krisa.ControlUsuarios.UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void txtNuevoPass_Validating_1(object sender, CancelEventArgs e)
+        private void txtNuevoPass_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtNuevoPass.Text))
             {
@@ -119,7 +118,7 @@ namespace Krisa.ControlUsuarios.UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void txtConfirmar_Validating_1(object sender, CancelEventArgs e)
+        private void txtConfirmar_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtConfirmar.Text))
             {

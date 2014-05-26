@@ -33,7 +33,7 @@ namespace Krisa.ControlUsuarios.Test
             usuario.Contrasena = user.Encriptar("MiPasswordSeguro12");
             usuario.Activo = true;
 
-            user.AgregarUsuario(usuario);
+            user.AgregarUsuario(usuario.Nombre, usuario.NombreCompleto, usuario.Contrasena);
             Assert.AreEqual(usuario, true);
         }
     }

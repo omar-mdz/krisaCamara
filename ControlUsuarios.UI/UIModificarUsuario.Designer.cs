@@ -58,7 +58,7 @@
             this.btnCancelar.TabIndex = 19;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click_1);
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnModificar
             // 
@@ -71,7 +71,7 @@
             this.btnModificar.Text = "Modificar";
             this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnModificar.UseVisualStyleBackColor = false;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click_1);
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // gbxDatosUsuario
             // 
@@ -112,7 +112,7 @@
             this.txtConfirmar.TabIndex = 4;
             this.txtConfirmar.UseSystemPasswordChar = true;
             this.txtConfirmar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtConfirmar_KeyPress);
-            this.txtConfirmar.Validating += new System.ComponentModel.CancelEventHandler(this.txtConfirmar_Validating_1);
+            this.txtConfirmar.Validating += new System.ComponentModel.CancelEventHandler(this.txtConfirmar_Validating);
             // 
             // txtUsuario
             // 
@@ -157,7 +157,7 @@
             this.txtNuevoPass.TabIndex = 3;
             this.txtNuevoPass.UseSystemPasswordChar = true;
             this.txtNuevoPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNuevoPass_KeyPress);
-            this.txtNuevoPass.Validating += new System.ComponentModel.CancelEventHandler(this.txtNuevoPass_Validating_1);
+            this.txtNuevoPass.Validating += new System.ComponentModel.CancelEventHandler(this.txtNuevoPass_Validating);
             // 
             // txtPass
             // 
@@ -169,7 +169,7 @@
             this.txtPass.TabIndex = 2;
             this.txtPass.UseSystemPasswordChar = true;
             this.txtPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPass_KeyPress);
-            this.txtPass.Validating += new System.ComponentModel.CancelEventHandler(this.txtPass_Validating_1);
+            this.txtPass.Validating += new System.ComponentModel.CancelEventHandler(this.txtPass_Validating);
             // 
             // Label1
             // 
