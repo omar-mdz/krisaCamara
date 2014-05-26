@@ -48,5 +48,21 @@ namespace Krisa.Camara.Test
 
         }
 
+        [TestMethod]
+        public void AgregarCamaraGestor()
+        {
+            GestorCamara gestorCamara = new GestorCamara();
+            VideoCamara esperado = new VideoCamara();
+            esperado.Nombre = "Camara Nueva";
+            esperado.Dispositivo = "Dispositivo Nuevo";
+            CamaraDB camaraDb = new CamaraDB();
+
+
+            gestorCamara.Agregar("Camara Nueva", "Dispositivo Nuevo");
+
+            Assert.AreEqual(esperado, camaraDb.Buscar("Camara Nueva"));
+
+        }
+
     }
 }
