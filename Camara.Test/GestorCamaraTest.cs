@@ -10,59 +10,43 @@ namespace Krisa.Camara.Test
         [TestMethod]
         public void AgregarCamara()
         {
-            VideoCamara camara = new VideoCamara();
-            camara.Nombre = "Camara de prueba";
-            camara.Dispositivo = "Dispositivo de prueba";
-            camara.esActivo = true;
+            string nombre = "Camara Superior";
+            string dispositivo = "WebCam de prueba";
+           
+            GestorCamara gestorCamara = new GestorCamara();
 
-            CamaraDB camaraDB = new CamaraDB();
-            camaraDB.Agregar(camara);
-
+            Assert.IsTrue(gestorCamara.Agregar(nombre, dispositivo));
 
         }
 
         [TestMethod]
         public void BuscarCamara()
         {
-            CamaraDB camaraDB = new CamaraDB();
-            VideoCamara camara = new VideoCamara();
-            camara.Nombre = "Camara de prueba";
-            camara.Dispositivo = "Dispositivo de prueba";
-            camara.esActivo = true;
+            string nombre = "Camara Superior";
+            string dispositivo = "WebCam de prueba";
 
-            VideoCamara camaraBuscada = new VideoCamara();
-            camaraBuscada = camaraDB.Buscar("Camara de prueba");
-            Assert.AreEqual(camara, camaraBuscada);
+            VideoCamara esperado = new VideoCamara();
+            esperado.Nombre = nombre;
+            esperado.Dispositivo = dispositivo;
+
+            GestorCamara gestorCamara = new GestorCamara();
+
+            Assert.AreEqual(esperado, gestorCamara.Buscar(nombre));
         }
+
 
         [TestMethod]
         public void SuspenderCamara()
         {
-             CamaraDB camaraDB = new CamaraDB();
-            VideoCamara camara = new VideoCamara();
-            camara.Nombre = "Camara de prueba";
-            camara.Dispositivo = "Dispositivo de prueba";
-            camara.esActivo = true;
-
-            camaraDB.Suspender(camara);
-
-        }
-
-        [TestMethod]
-        public void AgregarCamaraGestor()
-        {
+            string nombre = "Camara Superior";
+           
             GestorCamara gestorCamara = new GestorCamara();
-            VideoCamara esperado = new VideoCamara();
-            esperado.Nombre = "Camara Nueva";
-            esperado.Dispositivo = "Dispositivo Nuevo";
-            CamaraDB camaraDb = new CamaraDB();
 
-
-            gestorCamara.Agregar("Camara Nueva", "Dispositivo Nuevo");
-
-            Assert.AreEqual(esperado, camaraDb.Buscar("Camara Nueva"));
+            Assert.IsTrue(gestorCamara.Suspender(nombre));
 
         }
+
+       
 
     }
 }

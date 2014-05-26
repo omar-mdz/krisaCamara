@@ -129,7 +129,7 @@ namespace Krisa.ControlUsuarios
                     return resultado.Any() ? false : true;
                 }
             }
-            catch (Exception)
+            catch (Exception)ala
             {
                 throw;
             }

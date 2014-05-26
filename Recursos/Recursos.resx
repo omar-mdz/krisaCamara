@@ -132,6 +132,9 @@
   <data name="ERROR_AGREGAR_USUARIO" xml:space="preserve">
     <value>El usuario ya esta registrado</value>
   </data>
+  <data name="ERROR_CAMARA_EXISTE" xml:space="preserve">
+    <value>La cámara ya esta registrada</value>
+  </data>
   <data name="ERROR_COINCIDIR_CONTRASENA" xml:space="preserve">
     <value>La contraseña no coinciden</value>
   </data>
