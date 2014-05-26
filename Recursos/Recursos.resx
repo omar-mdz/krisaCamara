@@ -135,9 +135,6 @@
   <data name="ERROR_COINCIDIR_CONTRASENA" xml:space="preserve">
     <value>La contraseña no coinciden</value>
   </data>
-  <data name="ERROR_CONEXION" xml:space="preserve">
-    <value>Ocurrio un error en la conexión a la base de datos</value>
-  </data>
   <data name="ERROR_CONTRASENA" xml:space="preserve">
     <value>La contraseña es incorrecta</value>
   </data>

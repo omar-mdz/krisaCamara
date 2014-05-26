@@ -115,15 +115,6 @@ namespace Krisa {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Ocurrio un error en la conexión a la base de datos.
-        /// </summary>
-        public static string ERROR_CONEXION {
-            get {
-                return ResourceManager.GetString("ERROR_CONEXION", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a La contraseña es incorrecta.
         /// </summary>
         public static string ERROR_CONTRASENA {

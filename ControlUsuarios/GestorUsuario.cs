@@ -12,7 +12,10 @@ namespace Krisa.ControlUsuarios
         /// <summary>
         /// Agregar un usuario a la Base de Datos
         /// </summary>
-        /// <param name="usuario">Es el usuario que se va a agregar a la base de datos</param 
+        /// <param name="usuario">Usuario que se va a agregar a la base de datos</param 
+        /// <returns>true = si el usuario fue agregado con exito, false = ocurrio un error</returns>
+        /// <exception cref="Exception">Error de Entity Framework</excepcion>
+        /// <exception cref="ApplicationException">El usuario con nombre especificado ya esta registrado</excepcion>
         public bool AgregarUsuario(Usuario usuario)
         {
             if (VerificarUsuario(usuario))
@@ -30,20 +33,24 @@ namespace Krisa.ControlUsuarios
                 }
                 catch (Exception)
                 {
-                    throw new Exception(Krisa.Recursos.ERROR_CONEXION);
+                    throw;
                 }
             }
             else
             {
-                throw new Exception(Krisa.Recursos.ERROR_AGREGAR_USUARIO);
+                throw new ApplicationException(Krisa.Recursos.ERROR_AGREGAR_USUARIO);
             }
         }
 
         /// <summary>
-        /// Metodo para modificar la contraseña de un usuario
+        /// Modificar la contraseña de un usuario
         /// </summary>
-        /// <param name="usuario">Es el usuario que se va a modificar en la Base de datos</param>
-        /// <param name="nuevoPass">Es la nueva contraseña del usuario</param>
+        /// <param name="usuario">Usuario que se va a modificar en la Base de datos</param>
+        /// <param name="nuevoPass">Nueva contraseña del usuario</param>
+        /// <returns>true = se modifico el usuario, false = ocurrio un error</returns>
+        /// <exception cref="Exception">Error de Entity Framework</excepcion>
+        /// <exception cref="ApplicationException">La constraseña especificada de usuario no es correcta</excepcion>
+       
         public bool ModificarUsuario(Usuario usuario, string nuevaContrasena)
         {   
             string ContrasenaEncriptada = Encriptar(usuario.Contrasena);
@@ -63,20 +70,20 @@ namespace Krisa.ControlUsuarios
                 }
                 catch (Exception)
                 {
-                    throw new Exception(Krisa.Recursos.ERROR_CONEXION);   
+                    throw; 
                 }
             }
             else
             {
-                throw new Exception(Krisa.Recursos.ERROR_CONTRASENA);
+                throw new ApplicationException(Krisa.Recursos.ERROR_CONTRASENA);
             }
         }
 
         /// <summary>
-        /// Metodo para encriptar la contraseña del usuario
+        /// Encriptar la contraseña del usuario
         /// </summary>
-        /// <param name="password">Es la contraseña que se va a encriptar con el SHA256</param>
-        /// <returns></returns>
+        /// <param name="contrasena">Contraseña que se va a encriptar con el SHA256</param>
+        /// <returns>Cadena de la contraseña encriptada en algoritmo SHA256</returns>
         public string Encriptar(string contrasena)
         {
             SHA256CryptoServiceProvider provider = new SHA256CryptoServiceProvider();
@@ -94,10 +101,11 @@ namespace Krisa.ControlUsuarios
         }
 
         /// <summary>
-        /// Metodo para validar la contraseña anterior de un usuario
+        /// Validar la contraseña anterior de un usuario
         /// </summary>
-        /// <param name="contrasena">Es la contraseña que se va a validar en la base de datos</param>
-        /// <returns></returns>
+        /// <param name="usuario">Usuario para validar su contraseña en la base de datos</param>
+        /// <returns>true = contraseña correcta, false = ocurrio un error</returns>
+        /// <exception cref="Exception">Error de Entity Framework</excepcion>
         public bool ValidarContrasena(Usuario usuario)
         {
             try
@@ -110,15 +118,16 @@ namespace Krisa.ControlUsuarios
             }
             catch (Exception)
             {
-                throw new Exception(Krisa.Recursos.ERROR_CONEXION);
+                throw;
             }
         }
 
         /// <summary>
-        /// Metodo para verificar si un usuario ya esta registrado en la BD
+        /// Verificar si un usuario ya esta registrado en la Base de datos
         /// </summary>
-        /// <param name="usuario">Es el usuario que se va verficar si existe en la base de datos</param>
-        /// <returns></returns>
+        /// <param name="usuario">Usuario que se va verificar si existe en la base de datos</param>
+        /// <returns>true = el usuario no esta registrado en la base de datos, false = ocurrio un error</returns>
+        /// <exception cref="Exception">Error de Entity Framework</excepcion>
         public bool VerificarUsuario(Usuario usuario)
         {
             try
@@ -131,7 +140,7 @@ namespace Krisa.ControlUsuarios
             }
             catch (Exception)
             {
-                throw new Exception(Krisa.Recursos.ERROR_CONEXION);
+                throw;
             }
         }
     }
