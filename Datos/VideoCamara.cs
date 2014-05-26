@@ -13,7 +13,7 @@ namespace Krisa.Datos
             return Nombre + ", " + Dispositivo;
         }
 
-        public override bool Equals(object obj)
+        /*public override bool Equals(object obj)
         {
             VideoCamara camara = (VideoCamara)obj;
             if (Nombre != camara.Nombre)
@@ -28,6 +28,7 @@ namespace Krisa.Datos
             return true;
         }
 
+         */
         public override int GetHashCode()
         {
             return base.GetHashCode();

@@ -2,11 +2,25 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AForge.Video.DirectShow;
+using AForge.Video.FFMPEG;
+using AForge.Video;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace Krisa.Camara
 {
     public class GestorCamara
     {
+
+        VideoCaptureDevice videoFuente;
+        //private bool dispositivoExistente = false;
+        private FilterInfoCollection dispositivosDeVideo;
+
+        //Escritor de frames
+        static VideoFileWriter writer = new VideoFileWriter();
+
+
         public GestorCamara()
         {
 
@@ -32,7 +46,7 @@ namespace Krisa.Camara
                 {
                     using (var db = new KrisaDBCliente())
                     {
-                        db.camaras.Add(camara);
+                        db.Camaras.Add(camara);
                         db.SaveChanges();
                         return true;
                     }
@@ -63,7 +77,7 @@ namespace Krisa.Camara
             {
                 using (var db = new KrisaDBCliente())
                 {
-                    var resultado = from cam in db.camaras
+                    var resultado = from cam in db.Camaras
                                     where cam.Nombre == nombreCamara
                                     select cam;
                     return resultado.First();
@@ -82,7 +96,7 @@ namespace Krisa.Camara
             {
                 using (var db = new KrisaDBCliente())
                 {
-                    var resultado = from cam in db.camaras
+                    var resultado = from cam in db.Camaras
                                     where cam.Nombre == nombreCamara
                                     select cam;
                     return resultado.Any();
@@ -106,7 +120,7 @@ namespace Krisa.Camara
             {
                 using (var db = new KrisaDBCliente())
                 {
-                    var suspender = from cam in db.camaras
+                    var suspender = from cam in db.Camaras
                                     where cam.Nombre == nombreCamara
                                     select cam;
                     suspender.Single().esActivo = false;
@@ -127,23 +141,46 @@ namespace Krisa.Camara
         /// <returns>Cámaras conectadas y reconocidas por el sistema</returns>
         public Object[] ListarCamaras()
         {
-            // TODO
-            return null;
+            List<Object> dispositivos = new List<Object>();
+            try
+            {
+                dispositivosDeVideo = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+                //cmbCamaras.Items.Clear();
+                if (dispositivosDeVideo.Count == 0)
+                    throw new ApplicationException();
+
+                //bool dispositivoExistente = true;
+                //int i = 0;
+                foreach (FilterInfo dispositivo in dispositivosDeVideo)
+                {
+                    //cmbCamaras.Items.Add(dispositivo.Name);
+                    //dispositivos[i] = dispositivo.Name;
+                    //i++;
+                    dispositivos.Add(dispositivo.Name);
+                }
+                return dispositivos.ToArray();
+                //cmbCamaras.SelectedIndex = 0; //Pone a la primera cámara como default
+            }
+            catch (ApplicationException)
+            {
+                //dispositivoExistente = false;
+                throw new ApplicationException("No existen dispositivos de caputra en el sistema");
+            }
         }
 
         /// <summary>
         /// Obtener las cámaras que están registradas en la base de datos
         /// </summary>
         /// <returns>Cámaras registradas en la base de datos</returns>
-        public List<VideoCamara> ObtenerCamaras()
+        public Object[] ObtenerCamaras()
         {
             try
             {
                 using (var db = new KrisaDBCliente())
                 {
-                    var suspender = from cam in db.camaras
+                    var suspender = from cam in db.Camaras
                                     select cam;
-                    return suspender.ToList();
+                    return suspender.ToArray();
                 }
             }
             catch (Exception)
@@ -151,5 +188,108 @@ namespace Krisa.Camara
                 throw;
             }
         }
+
+
+        ////////////ACCIONES VIDEO//////////////////
+
+
+        /// <summary>
+        /// Permite previsualizar el video antes de iniciar a grabar.
+        /// </summary>
+        /// <param name="indiceCamara">Recibe un dispositivo de video</param>
+        public void previsualizarVideo(int indiceCamara)
+        {
+            //videoFuente.VideoResolution = videoFuente.VideoCapabilities[Convert.ToInt32("640;480")];
+            try
+            {
+                FilterInfoCollection coleccionDeCamaras = obtenerColeccionDeCamaras();
+                videoFuente = new VideoCaptureDevice(coleccionDeCamaras[indiceCamara].MonikerString);
+
+                videoFuente.NewFrame += new NewFrameEventHandler(VideoNewFrame);
+                videoFuente.NewFrame += new NewFrameEventHandler(VideoNewFrameSave);
+                CerrarConexion();
+                videoFuente.Start();
+            }
+            catch (Exception)
+            {
+
+                throw new ApplicationException("Previsualizar video");
+            }
+
+        }
+
+        private void CerrarConexion()
+        {
+            if (!(videoFuente == null))
+                if (videoFuente.IsRunning)
+                {
+                    videoFuente.SignalToStop();
+                    videoFuente = null;
+                }
+        }
+
+        public FilterInfoCollection obtenerColeccionDeCamaras()
+        {
+            return dispositivosDeVideo = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+        }
+
+
+        public static Bitmap img;
+        public static bool existeNuevoFrame { set; get; }
+
+        public void VideoNewFrame(object sender, NewFrameEventArgs eventArgs)
+        {
+            existeNuevoFrame = true;
+            img = (Bitmap)eventArgs.Frame.Clone();
+
+
+        }
+
+        static Bitmap imgsave;
+        public void VideoNewFrameSave(object sender, NewFrameEventArgs eventArgs)
+        {
+            try
+            {
+                imgsave = (Bitmap)eventArgs.Frame.Clone();
+                writer.WriteVideoFrame((Bitmap)eventArgs.Frame.Clone());
+            }
+            catch (Exception) { }
+
+
+        }
+
+        public bool getExisteNuevoFrame()
+        {
+            return existeNuevoFrame;
+        }
+
+        public Bitmap getBitmap()
+        {
+            existeNuevoFrame = false;
+            return img;
+        }
+
+
+
+        public void ComenzarGrabacion()
+        {
+            try
+            {
+                writer.Open("VideoGenerado.avi", imgsave.Width, imgsave.Height, 22, VideoCodec.MPEG4);
+
+            }
+            catch (Exception) { }
+
+        }
+
+        public void DetenerGrabacion()
+        {
+            try
+            {
+                writer.Close();
+            }
+            catch (Exception) { }
+        }
+
     }
 }

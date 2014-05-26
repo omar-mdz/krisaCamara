@@ -16,7 +16,11 @@ namespace Krisa.Camara.UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            //Application.Run(new UICapturarVideo());
+            
+                Application.Run(new UICamaraTest());
+            
         }
+
     }
 }
