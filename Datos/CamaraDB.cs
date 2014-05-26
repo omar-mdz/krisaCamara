@@ -9,7 +9,7 @@ namespace Krisa.Datos
     /// Clase que realiza operaciones CRUD (Create, Read, Update, Delete) 
     /// sobre la clase VideoCamara
     /// </summary>
-    public class CamaraDB
+    public class CamaraDB : IDisposable
     {
         KrisaDBCliente camarasDb;
         public CamaraDB()
@@ -39,6 +39,11 @@ namespace Krisa.Datos
             }
         }
 
+
+        /// <summary>
+        /// Método que suspende una Videocamara en la base de datos local
+        /// </summary>
+        /// <param name="camara">VideoCamara que existe en la base de datos local</param>
         public void Suspender(VideoCamara camara)
         {
             try
@@ -50,7 +55,6 @@ namespace Krisa.Datos
             }
             catch (Exception e)
             {
-
                 throw new Exception(e.Message);
             }
             finally
@@ -62,11 +66,38 @@ namespace Krisa.Datos
 
         public VideoCamara Buscar(string nombreCamara)
         {
-            var resultado = from cam in camarasDb.camaras
-                            where cam.Nombre == nombreCamara
+            try
+            {
+                var resultado = from cam in camarasDb.camaras
+                                where cam.Nombre == nombreCamara
 
-                            select cam;
-            return resultado.First<VideoCamara>();
+                                select cam;
+                return resultado.First<VideoCamara>();
+            }
+            catch (Exception e)
+            {
+                camarasDb.Dispose();
+                throw new Exception(e.Message);
+            }
+
         }
+
+        /// <summary>
+        /// Método que encuentra todas las videocamaras que se encuentran en la base de datos
+        /// </summary>
+        /// <returns>Lista de VideoCamaras</returns>
+        public List<VideoCamara> EncontrarTodas()
+        {
+
+            var resultado = from cam in camarasDb.camaras select cam;
+            
+            return resultado.ToList<VideoCamara>();
+        }
+
+        public void Dispose()
+        {
+            camarasDb.Dispose();
+        }
+
     }
 }
