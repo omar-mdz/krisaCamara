@@ -5,45 +5,92 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Krisa.Tarjeta.UI
 {
     public partial class UIAgregarTarjeta : Form
     {
+        /// <summary>
+        /// Gestor de la tarjeta
+        /// </summary>
+        private GestorTarjeta gestor;
+
         public UIAgregarTarjeta()
         {
             InitializeComponent();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Inicializacion del formulario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UIAgregarTarjeta_Load(object sender, EventArgs e)
         {
-
+            cmbDireccion.Items.AddRange(Driver.Tarjetas);
+            gestor = new GestorTarjeta();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Validacion del nombre de la tarjeta
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtNombre_Validating(object sender, CancelEventArgs e)
         {
-
+            //Validar campo nombre de la Tarjeta
+            if (string.IsNullOrEmpty(txtNombre.Text))
+            {
+                errorAgregarTarjeta.SetErrorResource(txtNombre, "CAMPO_VACIO");
+                txtNombre.BackColor = Color.LightSkyBlue;
+                e.Cancel = true;
+                return;
+            }
+            if (!Regex.IsMatch(txtNombre.Text, "^[a-zA-Z0-9]*$"))
+            {
+                errorAgregarTarjeta.SetErrorResource(txtNombre, "CAMPO_LETRASYNUMEROS");
+                txtNombre.BackColor = Color.LightSkyBlue;
+                e.Cancel = true;
+                return;
+            }
+            e.Cancel = false;
+            errorAgregarTarjeta.SetError(txtNombre, "");
+            txtNombre.BackColor = SystemColors.Window;
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Accion del boton Aceptar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (ValidateChildren(ValidationConstraints.Enabled))
+            {
+                try
+                {
+                    var nombre = txtNombre.Text.Trim();
+                    var direccion = (string)cmbDireccion.SelectedItem;
 
+                    gestor.AgregarTarjeta(nombre, direccion);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Accion del boton Cancelar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
+            Close();
         }
     }
 }
