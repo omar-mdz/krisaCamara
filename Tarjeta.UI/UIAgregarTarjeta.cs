@@ -75,6 +75,7 @@ namespace Krisa.Tarjeta.UI
                     var direccion = (string)cmbDireccion.SelectedItem;
 
                     gestor.AgregarTarjeta(nombre, direccion);
+                    MessageBox.Show(Recursos.TARJETA_AGREGADA);
                 }
                 catch (Exception ex)
                 {

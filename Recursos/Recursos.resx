@@ -144,6 +144,9 @@
   <data name="ERROR_CONTRASENA_MINIMA" xml:space="preserve">
     <value>La longitud minima es de 8 caracteres</value>
   </data>
+  <data name="TARJETA_AGREGADA" xml:space="preserve">
+    <value>Tarjeta agregada con exito</value>
+  </data>
   <data name="USUARIO_AGREGADO" xml:space="preserve">
     <value>Usuario agregado con exito</value>
   </data>
